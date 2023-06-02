@@ -1,0 +1,43 @@
+---
+title: "Pollution & Prejudice - Data Analysis Summary"
+format: 
+  html:
+    code-fold: true
+---
+
+```{r setup}
+#| echo: false
+#| warning: false
+#| message: false
+
+# suppressPackageStartupMessages(library(here))
+library(targets)
+```
+
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+You can add options to executable code like this
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+## Plot
+
+@fig-boxplot shows a plot from the targets pipeline.
+
+```{r}
+#| label: fig-boxplot
+#| fig-cap: "CES departure scores by HOLC grade."
+#| warning: false
+#| fig.height: 7
+#| fig.width: 13
+#| dpi: 300
+#| echo: false
+# out-width: 10
+
+targets::tar_read(plot_scores_box_departure_legend,
+                  store = here::here(tar_config_get('store'))) # allows for manual rendering
+
+```
