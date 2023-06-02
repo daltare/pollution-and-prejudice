@@ -1,0 +1,25 @@
+---
+title: "README"
+format: gfm
+---
+
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+# Pollution & Prejudice
+
+## Reproducibility
+
+This project uses the [`targets` package](https://docs.ropensci.org/targets/) for workflow management. Run `targets::tar_make()` from the console to run the workflow and reproduce all results. You can inspect results of each step with `tar_read()` or `tar_load()`.
+
+**Targets workflow:**
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+
+cat(
+    "```mermaid",
+    suppressMessages(targets::tar_mermaid(targets_only = FALSE, )),
+    "```",
+    sep = "\n"
+)
+#this should display correctly on GitHub, or code can be pasted into https://mermaid.live
+```
