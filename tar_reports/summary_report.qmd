@@ -1,8 +1,6 @@
 ---
 title: "Pollution & Prejudice - Data Analysis Summary"
-format: 
-  gfm:
-    code-fold: true
+format: gfm
 ---
 
 ```{r setup}

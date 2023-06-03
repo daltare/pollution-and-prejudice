@@ -34,7 +34,8 @@ tar_option_set(
                  'tmaptools',
                  'ceramic', 
                  'rosm',
-                 'sp'
+                 'sp',
+                 'quarto'
     ), 
     # default storage format
     format = "rds",
@@ -220,8 +221,12 @@ list(
     
     
     ### 05 - create reports / presentations ------------------------------------
-    tar_quarto(name = summary_report,
+    tar_quarto(name = summary_report, 
                path = 'tar_reports/summary_report.qmd'),
+    tar_target(name = summary_report_html, 
+               command = quarto_render(input = 'tar_reports/summary_report.qmd', 
+                                       output_format = 'html'),
+               format = 'file'),
     tar_quarto(name = targets_notes_file, 
                path = 'targets_notes.qmd'),
     
