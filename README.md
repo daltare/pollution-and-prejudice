@@ -32,6 +32,7 @@ graph LR
     x7420bd9270f8d27d([""Up to date""]):::uptodate --- x0a52b03877696646([""Outdated""]):::outdated
     x0a52b03877696646([""Outdated""]):::outdated --- xbf4603d6c2c2ad6b([""Stem""]):::none
     xbf4603d6c2c2ad6b([""Stem""]):::none --- xf0bce276fe2b9d3e>""Function""]:::none
+    xf0bce276fe2b9d3e>""Function""]:::none --- x5bffbffeae195fc9{{""Object""}}:::none
   end
   subgraph Graph
     direction LR
@@ -73,6 +74,7 @@ graph LR
     x6538bfb2bd8fa5af(["raw_ces_data_file"]):::uptodate --> x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate
     x9fc5d9228e2f8c78>"f_plot_scores_box_departure_legend"]:::uptodate --> xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate
+    xf443f725966ed075{{"last_report_update"}}:::uptodate --> x3b5990520b2e818d(["summary_report_html"]):::uptodate
     xc11e093e8a0331b6>"f_plot_map_panels"]:::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
     x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
@@ -81,9 +83,8 @@ graph LR
     x0933fedf1eaed55e(["df_holc_demographics_calculations"]):::uptodate --> x722c080414fdf571(["df_holc_demographics_summary"]):::uptodate
     x2dfdf1b5ee4ba094>"f_summarize_HOLC_demographics"]:::uptodate --> x722c080414fdf571(["df_holc_demographics_summary"]):::uptodate
     x28598aa74e36431d>"f_download_raw_holc_data"]:::uptodate --> x7deb259c829fdb2e(["raw_holc_data_files"]):::uptodate
-    x118ccf0169559b01(["readme_file"]):::outdated --> x118ccf0169559b01(["readme_file"]):::outdated
-    x3b5990520b2e818d(["summary_report_html"]):::uptodate --> x3b5990520b2e818d(["summary_report_html"]):::uptodate
     xd244e8c357cc9580(["targets_notes_file"]):::uptodate --> xd244e8c357cc9580(["targets_notes_file"]):::uptodate
+    x118ccf0169559b01(["readme_file"]):::outdated --> x118ccf0169559b01(["readme_file"]):::outdated
   end
   classDef uptodate stroke:#000000,color:#ffffff,fill:#354823;
   classDef outdated stroke:#000000,color:#000000,fill:#78B7C5;
@@ -91,7 +92,7 @@ graph LR
   linkStyle 0 stroke-width:0px;
   linkStyle 1 stroke-width:0px;
   linkStyle 2 stroke-width:0px;
-  linkStyle 49 stroke-width:0px;
-  linkStyle 50 stroke-width:0px;
+  linkStyle 3 stroke-width:0px;
   linkStyle 51 stroke-width:0px;
+  linkStyle 52 stroke-width:0px;
 ```

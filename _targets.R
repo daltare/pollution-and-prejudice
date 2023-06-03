@@ -14,6 +14,9 @@ library(targets)
 library(tarchetypes) 
 library(here)
 
+# force report to render to html if source qmd file changes
+last_report_update <- file.info('tar_reports/summary_report.qmd')$mtime
+
 ## Set target options:
 tar_option_set(
     # packages that targets need to run
@@ -224,8 +227,13 @@ list(
     tar_quarto(name = summary_report, 
                path = 'tar_reports/summary_report.qmd'),
     tar_target(name = summary_report_html, 
-               command = quarto_render(input = 'tar_reports/summary_report.qmd', 
-                                       output_format = 'html'),
+               command = {
+                   # force this to re-run if the qmd file has changed
+                   last_report_update
+                   # render
+                   quarto_render(input = 'tar_reports/summary_report.qmd', 
+                                       output_format = 'html')
+                   },
                format = 'file'),
     tar_quarto(name = targets_notes_file, 
                path = 'targets_notes.qmd'),
