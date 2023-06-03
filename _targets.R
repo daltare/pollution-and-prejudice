@@ -240,6 +240,6 @@ list(
     
     ### 06 - readme file -------------------------------------------------------
     tar_quarto(name = readme_file,
-               path = 'ReadMe.qmd')
+               path = 'README.qmd')
 )
 
