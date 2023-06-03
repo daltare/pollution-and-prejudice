@@ -4,13 +4,24 @@
 
 # Pollution & Prejudice
 
+NOTE: this is an update to the Redline Mapping project contained here:
+<https://github.com/daltare/Redline-Mapping>
+
+## Background
+
+Placeholder text
+
+## Data Sources
+
+Placeholder text
+
 ## Reproducibility
 
 This project uses the [`targets`
 package](https://docs.ropensci.org/targets/) for workflow management.
 Run `targets::tar_make()` from the console to run the workflow and
-reproduce all results. You can inspect results of each step with
-`tar_read()` or `tar_load()`.
+reproduce all results. For more information, see the **targets_notes**
+file.
 
 **Targets workflow:**
 
@@ -38,7 +49,11 @@ graph LR
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate
     xd22b3ef3698af9c3>"f_plot_race_bars_by_group"]:::uptodate --> xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate
+    xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
     xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
+    x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
+    x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
+    xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
     xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::uptodate --> xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate
     x1909355c81c03a12>"f_check_missing_CES_scores"]:::uptodate --> xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate
     x6a4e5ab768f76050>"f_plot_scores_points_raw"]:::uptodate --> xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::uptodate
@@ -67,6 +82,7 @@ graph LR
     x2dfdf1b5ee4ba094>"f_summarize_HOLC_demographics"]:::uptodate --> x722c080414fdf571(["df_holc_demographics_summary"]):::uptodate
     x28598aa74e36431d>"f_download_raw_holc_data"]:::uptodate --> x7deb259c829fdb2e(["raw_holc_data_files"]):::uptodate
     x118ccf0169559b01(["readme_file"]):::outdated --> x118ccf0169559b01(["readme_file"]):::outdated
+    xd244e8c357cc9580(["targets_notes_file"]):::outdated --> xd244e8c357cc9580(["targets_notes_file"]):::outdated
   end
   classDef uptodate stroke:#000000,color:#ffffff,fill:#354823;
   classDef outdated stroke:#000000,color:#000000,fill:#78B7C5;
@@ -74,5 +90,6 @@ graph LR
   linkStyle 0 stroke-width:0px;
   linkStyle 1 stroke-width:0px;
   linkStyle 2 stroke-width:0px;
-  linkStyle 45 stroke-width:0px;
+  linkStyle 49 stroke-width:0px;
+  linkStyle 50 stroke-width:0px;
 ```

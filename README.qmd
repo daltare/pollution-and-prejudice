@@ -7,9 +7,19 @@ format: gfm
 
 # Pollution & Prejudice
 
+NOTE: this is an update to the Redline Mapping project contained here: <https://github.com/daltare/Redline-Mapping>
+
+## Background
+
+Placeholder text
+
+## Data Sources
+
+Placeholder text
+
 ## Reproducibility
 
-This project uses the [`targets` package](https://docs.ropensci.org/targets/) for workflow management. Run `targets::tar_make()` from the console to run the workflow and reproduce all results. You can inspect results of each step with `tar_read()` or `tar_load()`.
+This project uses the [`targets` package](https://docs.ropensci.org/targets/) for workflow management. Run `targets::tar_make()` from the console to run the workflow and reproduce all results. For more information, see the **targets_notes** file.
 
 **Targets workflow:**
 

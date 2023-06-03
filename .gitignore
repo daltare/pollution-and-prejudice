@@ -1,0 +1,17 @@
+.Rproj.user
+.Rhistory
+.Rdata
+.httr-oauth
+.DS_Store
+
+ignore/
+email/
+
+# shiny deployment
+rsconnect/
+
+#Targets directry
+_targets/
+
+# tmap basemap stuff
+rosm.cache/

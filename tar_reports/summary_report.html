@@ -60,21 +60,114 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
-<p>You can add options to executable code like this</p>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>Placeholder text.</p>
+<section id="intent-purpose" class="level3">
+<h3 class="anchored" data-anchor-id="intent-purpose">Intent / Purpose</h3>
+<ul>
+<li><p>Analyze present-day pollution burden / vulnerability in neighborhoods that were assessed in the 1930s HOLC maps in California cities, and analyze trends by HOLC grade (to see if HOLC grade is a possible predictor of present day environmental conditions)</p></li>
+<li><p>Assess present-day demographics of neighborhoods assessed in the 1930s HOLC maps in California cities, and assess whether the distribution of racial / ethnic groups differs by HOLC grade (to see if those areas are still segregated by HOLC grade today)</p></li>
+</ul>
 </section>
-<section id="plot" class="level2">
-<h2 class="anchored" data-anchor-id="plot">Plot</h2>
-<p><a href="#fig-boxplot">Figure&nbsp;1</a> shows a plot from the targets pipeline.</p>
+<section id="data-sources" class="level3">
+<h3 class="anchored" data-anchor-id="data-sources">Data Sources</h3>
+<ul>
+<li>CalEnviroScreen (includes 2019 5-year ACS data)</li>
+<li>HOLC (Redline) Maps</li>
+</ul>
+</section>
+</section>
+<section id="process-overview" class="level2">
+<h2 class="anchored" data-anchor-id="process-overview">Process Overview</h2>
+<p>Estimate CES scores and present-day racial / ethnic makeup for each neighborhood in the 1930s HOLC maps in California, using an area weighted average of CES scores / demographic data for census tracts that overlap each HOLC neighborhood</p>
+<p><a href="#fig-map-process">Figure&nbsp;1</a> illustrates the process for estimating CES Scores.</p>
+<ul>
+<li>Panel 1 (left) shows the HOLC neighborhoods and their respective HOLC grades</li>
+<li>Panel 2 shows the outline of the HOLC neighborhoods, overlaid on top of the CalEnviroScreen scores (by census tract)</li>
+<li>Panel 3 shows the intersection of the HOLC neighborhoods and the CalEnviroScreen scores</li>
+<li>Panel 4 (right) shows the estimated / computed CalEnviroScreen score for each HOLC neighborhood, based on an area weighted average of the CalEnviroScreen scores for the census tracts that overlap with each HOLC neighborhood</li>
+</ul>
+<div id="fig-map-process" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../tar_plots/01_map-combined_Stockton.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Process Map</figcaption>
+</figure>
+</div>
+</section>
+<section id="results---calenviroscreen-scores" class="level2">
+<h2 class="anchored" data-anchor-id="results---calenviroscreen-scores">Results - CalEnviroScreen Scores</h2>
+<section id="raw-scores" class="level3">
+<h3 class="anchored" data-anchor-id="raw-scores">Raw Scores</h3>
+<p><a href="#fig-scores-raw">Figure&nbsp;2</a> shows the estimated CES score for each neighborhood in the 1930s HOLC maps.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scores-raw" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="summary_report_files/figure-html/fig-scores-raw-1.png" class="img-fluid figure-img" width="3000"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Estimated CES scores for each neighborhood in the HOLC maps in California.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="average-scores-by-holc-grade" class="level3">
+<h3 class="anchored" data-anchor-id="average-scores-by-holc-grade">Average Scores by HOLC Grade</h3>
+<p><a href="#fig-scores-avg-by-grade">Figure&nbsp;3</a> shows the average of the estimated CES scores for each HOLC grade (A through D) within each city.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scores-avg-by-grade" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="summary_report_files/figure-html/fig-scores-avg-by-grade-1.png" class="img-fluid figure-img" width="3000"></p>
+<figcaption class="figure-caption">Figure&nbsp;3: Average estimated CES scores for each HOLC grade within each city.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="adjusted-departure-scores" class="level3">
+<h3 class="anchored" data-anchor-id="adjusted-departure-scores">Adjusted (Departure) Scores</h3>
+<p><a href="#fig-scores-departure">Figure&nbsp;4</a> shows how we standardize the scores to allow for comparisons across cities.</p>
+<ul>
+<li>Calculate a “departure” score for each HOLC neighborhood, which is the difference between (1) the estimated CES score for that neighborhood and (2) the average of the estimated CES scores for all HOLC neighborhoods in that same city.</li>
+<li>Essentially, this centers the average estimated CES score for all cities at zero, and makes comparisons across cities possible (otherwise, regional differences in the factors that CES measures would overwhelm any differences between HOLC grades)</li>
+<li>A positive departure score means the CES score for that HOLC neighborhood is above the average for its city, whereas a negative score means the CES score is below the average for its city.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scores-departure" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="summary_report_files/figure-html/fig-scores-departure-1.png" class="img-fluid figure-img" width="3000"></p>
+<figcaption class="figure-caption">Figure&nbsp;4: Estimated CES departure scores.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="adjusted-departure-scores---boxplot" class="level3">
+<h3 class="anchored" data-anchor-id="adjusted-departure-scores---boxplot">Adjusted (Departure) Scores - Boxplot</h3>
+<p><a href="#fig-boxplot">Figure&nbsp;5</a> shows a boxplot of the departure scores, which helps to illustrate the scale of the differences in estimated CES scores between the HOLC grades.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-boxplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-boxplot-1.png" class="img-fluid figure-img" width="3900"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: CES departure scores by HOLC grade.</figcaption>
+<p><img src="summary_report_files/figure-html/fig-boxplot-1.png" class="img-fluid figure-img" width="3000"></p>
+<figcaption class="figure-caption">Figure&nbsp;5: Boxplot of estimated CES departure scores by HOLC grade.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="results---demographics" class="level2">
+<h2 class="anchored" data-anchor-id="results---demographics">Results - Demographics</h2>
+<p><a href="#fig-demographics-race">Figure&nbsp;6</a> shows the estimated present-day distribution of racial/ethnic groups across HOLC grades (for the population living within neighborhoods in California cities that were included in the 1930s HOLC maps).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-demographics-race" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="summary_report_files/figure-html/fig-demographics-race-1.png" class="img-fluid figure-img" width="3000"></p>
+<figcaption class="figure-caption">Figure&nbsp;6: Estimated present-day distribution of racial/ethnic groups across HOLC grades.</figcaption>
 </figure>
 </div>
 </div>
