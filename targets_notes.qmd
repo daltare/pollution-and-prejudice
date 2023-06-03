@@ -1,7 +1,9 @@
 ---
 title: "Targets Notes / Tips"
-format: html
+format: gfm
 ---
+
+<!-- targets_notes.md is generated from targets_notes.qmd. Please edit that file -->
 
 Notes to self about using the `targets` R package.
 

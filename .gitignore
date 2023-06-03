@@ -15,3 +15,5 @@ _targets/
 
 # tmap basemap stuff
 rosm.cache/
+
+targets_notes_files/
