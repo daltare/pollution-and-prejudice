@@ -19,9 +19,9 @@ Placeholder text
 
 ## Reproducibility
 
-This project uses the [`targets` package](https://docs.ropensci.org/targets/) for workflow management. Run `targets::tar_make()` from the console to run the workflow and reproduce all results. For more information, see the **targets_notes** file.
+This project uses the [`targets` package](https://docs.ropensci.org/targets/) for workflow management. Run `targets::tar_make()` from the console to run the workflow and reproduce all results. For more information, see the [targets_notes.md](targets_notes.md) file.
 
-**Targets workflow:**
+### Targets workflow:
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
 

@@ -20,10 +20,10 @@ Placeholder text
 This project uses the [`targets`
 package](https://docs.ropensci.org/targets/) for workflow management.
 Run `targets::tar_make()` from the console to run the workflow and
-reproduce all results. For more information, see the **targets_notes**
-file.
+reproduce all results. For more information, see the
+[targets_notes.md](targets_notes.md) file.
 
-**Targets workflow:**
+### Targets workflow:
 
 ``` mermaid
 graph LR
@@ -82,7 +82,8 @@ graph LR
     x2dfdf1b5ee4ba094>"f_summarize_HOLC_demographics"]:::uptodate --> x722c080414fdf571(["df_holc_demographics_summary"]):::uptodate
     x28598aa74e36431d>"f_download_raw_holc_data"]:::uptodate --> x7deb259c829fdb2e(["raw_holc_data_files"]):::uptodate
     x118ccf0169559b01(["readme_file"]):::outdated --> x118ccf0169559b01(["readme_file"]):::outdated
-    xd244e8c357cc9580(["targets_notes_file"]):::outdated --> xd244e8c357cc9580(["targets_notes_file"]):::outdated
+    x3b5990520b2e818d(["summary_report_html"]):::uptodate --> x3b5990520b2e818d(["summary_report_html"]):::uptodate
+    xd244e8c357cc9580(["targets_notes_file"]):::uptodate --> xd244e8c357cc9580(["targets_notes_file"]):::uptodate
   end
   classDef uptodate stroke:#000000,color:#ffffff,fill:#354823;
   classDef outdated stroke:#000000,color:#000000,fill:#78B7C5;
@@ -92,4 +93,5 @@ graph LR
   linkStyle 2 stroke-width:0px;
   linkStyle 49 stroke-width:0px;
   linkStyle 50 stroke-width:0px;
+  linkStyle 51 stroke-width:0px;
 ```
