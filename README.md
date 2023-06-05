@@ -61,8 +61,8 @@ This file includes estimated CalEnviroScreen 4.0 scores and estimated
 population by racial / ethnic group for each neighborhood in the 1930s
 HOLC maps. Note that the CES scores and demographics in this dataset are
 estimates that are intended to be used for relative comparisons across
-groups, and should be used with caution when looking at individual
-neighborhoods.
+groups, and should be used with caution when looking at individual or
+small numbers of neighborhoods in isolation.
 
 ## Reproducibility
 
