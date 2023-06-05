@@ -20,17 +20,17 @@ reflected its percieved credit worthiness, on a scale of A (Best)
 through D (Hazardous). Those assessments often included explicit
 references to both the racial makeup of a neighborhood’s population and
 the environmental conditions in and around that neighborhood as
-important factors in assigning each neighborhoods’ grade.
+important factors in assigning each neighborhood’s grade.
 
-Our goal is to assess whether or not present-day pollution burdens and
-vulnerability to the effects of pollution (due to socioeconomic
-conditions) in those neighborhoods assessed by the HOLC in the 1930s
-tend show any association with their historical HOLC grade. In other
-words, we are exploring whether historical HOLC grade continues to be a
-possible predictor of present-day environmental and socioeconomic
-conditions. We also explore the present-day racial / ethnic makeup of
-those neighborhoods, to assess whether racial disparities by HOLC grade
-tend to persist today.
+Our goal is to analyze whether or not present-day pollution burdens, as
+well as vulnerability to the effects of pollution (due to socioeconomic
+conditions), tend to show any association with historical HOLC grade in
+neighborhoods assessed by the HOLC in the 1930s. In other words, we are
+exploring whether historical HOLC grade continues to be a possible
+predictor of present-day environmental and socioeconomic conditions. We
+also explore the present-day racial / ethnic makeup of those
+neighborhoods, to assess whether racial disparities by HOLC grade tend
+to persist today.
 
 ## Data Sources
 
@@ -45,7 +45,7 @@ The primary data sources used in this analysis are:
   - assesses relative pollution burden and vulnerability for each census
     tract in California, providing an overall score as well as scores
     for 21 specific indicators of pollution burden or population
-    characteristics for each tract, available in to access/download in
+    characteristics for each tract, available to access/download in
     various formats
 
 ## Analytical Process and Results
