@@ -51,7 +51,7 @@ The primary data sources used in this analysis are:
 ## Analytical Process and Results
 
 For an overview of the analytical process and results, see the
-[summary_report.md](summary_report.md) document.
+[summary_report.md](tar_reports/summary_report.md) document.
 
 The primary results are available in the
 `tar_data_results/redline_CES_scores.gpkg` file, which can be downloaded
