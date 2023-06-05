@@ -11,17 +11,34 @@ NOTE: this is an update to the Redline Mapping project contained here: <https://
 
 ## Background
 
-Placeholder text
+The purpose of this project is to analyze present-day environmental and socioeconomic conditions in neighborhoods in California cities that were assessed by the federal Home Owners' Loan Corporation (HOLC) in the 1930s. As part of its assessment process, the HOLC produced maps that are today commonly known as "Redlining" maps, which divided up selected cities (generally those with a population greater than 40,000) into neighborhoods, and assigned each of those neighborhoods a grade that reflected its percieved credit worthiness, on a scale of A (Best) through D (Hazardous). Those assessments often included explicit references to both the racial makeup of a neighborhood's population and the environmental conditions in and around that neighborhood as important factors in assigning each neighborhoods' grade.
+
+Our goal is to assess whether or not present-day pollution burdens and vulnerability to the effects of pollution (due to socioeconomic conditions) in those neighborhoods assessed by the HOLC in the 1930s tend show any association with their historical HOLC grade. In other words, we are exploring whether historical HOLC grade continues to be a possible predictor of present-day environmental and socioeconomic conditions. We also explore the present-day racial / ethnic makeup of those neighborhoods, to assess whether racial disparities by HOLC grade tend to persist today.
 
 ## Data Sources
 
-Placeholder text
+The primary data sources used in this analysis are:
+
+-   [Mapping Inequality: Redlining in New Deal America](https://dsl.richmond.edu/panorama/redlining/#loc=6/36.37/-121.816)
+    -   provides the HOLC (or "Redlining") maps, which are available to download in various formats
+-   [CalEnviroScreen 4.0](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40)
+    -   assesses relative pollution burden and vulnerability for each census tract in California, providing an overall score as well as scores for 21 specific indicators of pollution burden or population characteristics for each tract, available in to access/download in various formats
+
+## Analytical Process and Results
+
+For an overview of the analytical process and results, see the [summary_report.md](summary_report.md) document.
+
+The primary results are available in the `tar_data_results/redline_CES_scores.gpkg` file, which can be downloaded using [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_results/redline_CES_scores.gpkg). This file includes estimated CalEnviroScreen 4.0 scores and estimated population by racial / ethnic group for each neighborhood in the 1930s HOLC maps. Note that the CES scores and demographics in this dataset are estimates that are intended to be used for relative comparisons across groups, and should be used with caution when looking at individual neighborhoods. 
 
 ## Reproducibility
 
-This project uses the [`targets` package](https://docs.ropensci.org/targets/) for workflow management. Run `targets::tar_make()` from the console to run the workflow and reproduce all results. For more information, see the [targets_notes.md](targets_notes.md) file.
+This project uses the [`targets` package](https://docs.ropensci.org/targets/) for workflow management. The entire workflow is defined and managed through the [\_targets.R](_targets.R) file.
+
+Run `targets::tar_make()` from the console to run the workflow and reproduce all results. For some more pointers on using the `targets` package, see the [targets_notes.md](targets_notes.md) file.
 
 ### Targets workflow:
+
+This figure provides a visualization of the workflow defined in the [\_targets.R](_targets.R) file:
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
 

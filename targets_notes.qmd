@@ -5,7 +5,7 @@ format: gfm
 
 <!-- targets_notes.md is generated from targets_notes.qmd. Please edit that file -->
 
-Notes to self about using the `targets` R package.
+Short notes to self about using the `targets` R package, focused on a few of the most useful functions and options I've found. For a comprehensive reference, see the {targets} user manual: <https://books.ropensci.org/targets/>
 
 ## visualize / validate the pipeline
 
@@ -37,6 +37,6 @@ Use workspaces:
 
 -   Quarto: `tarchetypes::tar_quarto()`
     -   embed target objects (e.g., plots) with `targets::tar_read(target_name)`
-    - may also want to include `store = here::here(tar_config_get('store')))` in the `targets::tar_read()` call - this should allow for manual rendering (i.e. without having to render using `tar_make()` each time) (might not be the best practice though?)
+    -   may also want to include `store = here::here(tar_config_get('store')))` in the `targets::tar_read()` call - this should allow for manual rendering (i.e. without having to render using `tar_make()` each time) (might not be the best practice though?)
     -   make sure packages needed to render the document are included in the .qmd file itself (and not just called by `tar_option_set()` in the `_targets.R` file)
 -   Rmarkdown: `tarchetypes::tar_render()`
