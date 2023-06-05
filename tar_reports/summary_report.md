@@ -109,3 +109,62 @@ included in the 1930s HOLC maps).
 src="summary_report_files/figure-commonmark/fig-demographics-race-1.png"
 id="fig-demographics-race"
 alt="Figure 6: Estimated present-day distribution of racial/ethnic groups across HOLC grades." />
+
+## Missing Scores
+
+Some census tracts are not assigned a score for individual CES 4.0
+indicators or an overall CES 4.0 score. In cases where these census
+tracts overlap with HOLC neighborhoods, we use a minimum threshold…
+
+There are 3 HOLC neighborhoods with missing CES 4.0 scores. The table
+below provides a summary of the number of HOLC neighborhoods with
+missing CES scores by CES measure and HOLC grade.
+
+``` r
+sf_combined_results <- targets::tar_read(sf_combined_results,
+                  store = here::here(tar_config_get('store'))) # allows for manual rendering
+
+holc_grade_counts <- sf_combined_results %>% 
+    st_drop_geometry() %>% 
+    count(holc_grade, name = 'n_total')
+
+missing_summary_all <- ces_scores_missing_check %>% 
+    group_by(ces_measure, holc_grade) %>% 
+    summarize(n_missing = sum(n_missing)) %>% 
+    left_join(holc_grade_counts) %>% 
+    mutate(pct_missing = n_missing / n_total * 100) %>% 
+    mutate(pct_missing = format(round(x = pct_missing, 
+                                      digits = 2), 
+                                nsmall = 2)) %>%
+    mutate(pct_missing = paste0(as.character(pct_missing), '%'))
+```
+
+    `summarise()` has grouped output by 'ces_measure'. You can override using the
+    `.groups` argument.
+    Joining with `by = join_by(holc_grade)`
+
+``` r
+missing_summary_all
+```
+
+    # A tibble: 25 × 5
+    # Groups:   ces_measure [12]
+       ces_measure                holc_grade n_missing n_total pct_missing
+       <chr>                      <chr>          <int>   <int> <chr>      
+     1 calenviroscreen_4_0_score  B                  1     273 0.37%      
+     2 calenviroscreen_4_0_score  C                  2     331 0.60%      
+     3 drinking_water_score       B                  1     273 0.37%      
+     4 education_score            B                  1     273 0.37%      
+     5 education_score            C                  1     331 0.30%      
+     6 housing_burden_score       B                  1     273 0.37%      
+     7 housing_burden_score       C                  2     331 0.60%      
+     8 lead_score                 B                  1     273 0.37%      
+     9 lead_score                 C                  2     331 0.60%      
+    10 linguistic_isolation_score B                  5     273 1.83%      
+    # ℹ 15 more rows
+
+## Comparison of Alternative Methods
+
+To test the sensitivity of the computed CES scores to the analysis
+method, we tried an alternative method and compared the results to the
+area weighted average method.

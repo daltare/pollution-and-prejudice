@@ -40,6 +40,10 @@ The primary data sources used in this analysis are:
   America](https://dsl.richmond.edu/panorama/redlining/#loc=6/36.37/-121.816)
   - provides the HOLC (or “Redlining”) maps, which are available to
     download in various formats
+  - a version of the dataset processed for use in this analysis
+    (including data for all 8 California urban areas assessed by the
+    HOLC) is available to download at [this
+    link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_processed/holc_data/redline_maps_processed.gpkg)
 - [CalEnviroScreen
   4.0](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40)
   - assesses relative pollution burden and vulnerability for each census
@@ -47,6 +51,12 @@ The primary data sources used in this analysis are:
     for 21 specific indicators of pollution burden or population
     characteristics for each tract, available to access/download in
     various formats
+  - a version of the dataset processed for use in this analysis (with
+    cleaned / expanded field names, missing values encoded as `NA`, and
+    revised geographic representation of census tracts - to fix
+    inconsistent boundaries between tracts - based on simplified 2010
+    TIGER data) is available to download at [this
+    link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_processed/ces_data/calenviroscreen_4-0_processed_tiger_simple.gpkg)
 
 ## Analytical Process and Results
 
@@ -105,11 +115,13 @@ graph LR
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate
     xd22b3ef3698af9c3>"f_plot_race_bars_by_group"]:::uptodate --> xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate
-    xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
-    xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
-    x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
-    x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
-    xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
+    xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
     xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::uptodate --> xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate
     x1909355c81c03a12>"f_check_missing_CES_scores"]:::uptodate --> xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate
     x6a4e5ab768f76050>"f_plot_scores_points_raw"]:::uptodate --> xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::uptodate
@@ -129,7 +141,7 @@ graph LR
     x6538bfb2bd8fa5af(["raw_ces_data_file"]):::uptodate --> x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate
     x9fc5d9228e2f8c78>"f_plot_scores_box_departure_legend"]:::uptodate --> xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate
-    xf443f725966ed075{{"last_report_update"}}:::uptodate --> x3b5990520b2e818d(["summary_report_html"]):::uptodate
+    xf443f725966ed075{{"last_report_update"}}:::uptodate --> x3b5990520b2e818d(["summary_report_html"]):::outdated
     xc11e093e8a0331b6>"f_plot_map_panels"]:::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
     x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
@@ -148,6 +160,6 @@ graph LR
   linkStyle 1 stroke-width:0px;
   linkStyle 2 stroke-width:0px;
   linkStyle 3 stroke-width:0px;
-  linkStyle 51 stroke-width:0px;
-  linkStyle 52 stroke-width:0px;
+  linkStyle 53 stroke-width:0px;
+  linkStyle 54 stroke-width:0px;
 ```
