@@ -95,7 +95,7 @@ f_plot_scores_points_average_by_grade <- function(sf_combined_results,
         labs(x = glue('Average {ces_measure_title} (Increasing Disadvantage \u2192)'),
              y = 'City',
              # title = glue('Average {ces_measure_title} by City and HOLC Grade for Neighborhoods in California Cities Assessed by the HOLC in the 1930s'),
-             title = glue('Average {ces_measure_title} by HOLC Grade for Neighborhoods California\'s HOLC Maps'),
+             title = glue('Average {ces_measure_title} by HOLC Grade for Neighborhoods in California\'s HOLC Maps'),
              # subtitle = glue('Black lines represent the average {ces_measure_title} for all neighborhoods assessed by the HOLC in that city'),
              subtitle = glue('Each point represents the average score for neighborhoods with the same grade in the 1930s HOLC maps'),
              caption = glue('HOLC = Home Owners\' Loan Corporation
