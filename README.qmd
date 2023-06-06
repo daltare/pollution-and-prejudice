@@ -40,7 +40,7 @@ This project uses the [`targets` package](https://docs.ropensci.org/targets/) fo
 
 Run `targets::tar_make()` from the console to run the workflow and reproduce all results. For some more pointers on using the `targets` package, see the [targets_notes.md](targets_notes.md) file.
 
-### Targets workflow:
+#### Targets workflow:
 
 This figure provides a visualization of the workflow defined in the [\_targets.R](_targets.R) file:
 
