@@ -1,5 +1,7 @@
 # Pollution & Prejudice - Data Analysis Summary
 
+<!-- summary_report.md is generated from summary_report.qmd - edit that file -->
+
 ## Background
 
 Placeholder text.

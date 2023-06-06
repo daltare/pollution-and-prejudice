@@ -1,11 +1,10 @@
-# Targets Notes / Tips
+# Targets Notes
 
-<!-- targets_notes.md is generated from targets_notes.qmd. Please edit that file -->
+<!-- targets_notes.md is generated from targets_notes.qmd - edit that file -->
 
-Short notes to self about using the `targets` R package, focused on a
-few of the most useful functions and options I’ve found. For a
-comprehensive reference, see the {targets} user manual:
-<https://books.ropensci.org/targets/>
+Notes about using the `targets` R package, focused on a few useful
+functions and options. For a comprehensive reference, see the {targets}
+user manual: <https://books.ropensci.org/targets/>
 
 ## visualize / validate the pipeline
 

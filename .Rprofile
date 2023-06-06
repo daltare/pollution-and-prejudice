@@ -1,5 +1,7 @@
 # .Rprofile
 
+source("renv/activate.R")
+
 # conflicts
 conflicted::conflict_prefer(name = 'filter', winner = 'dplyr', quiet = TRUE)
 conflicted::conflict_prefer(name = 'select', winner = 'dplyr', quiet = TRUE)
