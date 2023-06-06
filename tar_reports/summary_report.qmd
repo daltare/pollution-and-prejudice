@@ -3,6 +3,8 @@ title: "Pollution & Prejudice - Data Analysis Summary"
 format: gfm
 ---
 
+<!-- summary_report.md is generated from summary_report.qmd - edit that file -->
+
 ```{r setup}
 #| echo: false
 #| warning: false
