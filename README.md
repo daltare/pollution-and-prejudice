@@ -1,6 +1,6 @@
 # README
 
-<!-- README.md is generated from README.qmd. Please edit that file -->
+<!-- README.md is generated from README.qmd - edit that file -->
 
 # Pollution & Prejudice
 
@@ -75,6 +75,8 @@ groups, and should be used with caution when looking at individual or
 small numbers of neighborhoods in isolation.
 
 ## Reproducibility
+
+### Targets
 
 This project uses the [`targets`
 package](https://docs.ropensci.org/targets/) for workflow management.
@@ -151,7 +153,7 @@ graph LR
     x2dfdf1b5ee4ba094>"f_summarize_HOLC_demographics"]:::uptodate --> x722c080414fdf571(["df_holc_demographics_summary"]):::uptodate
     x28598aa74e36431d>"f_download_raw_holc_data"]:::uptodate --> x7deb259c829fdb2e(["raw_holc_data_files"]):::uptodate
     x118ccf0169559b01(["readme_file"]):::outdated --> x118ccf0169559b01(["readme_file"]):::outdated
-    xd244e8c357cc9580(["targets_notes_file"]):::uptodate --> xd244e8c357cc9580(["targets_notes_file"]):::uptodate
+    xd244e8c357cc9580(["targets_notes_file"]):::outdated --> xd244e8c357cc9580(["targets_notes_file"]):::outdated
   end
   classDef uptodate stroke:#000000,color:#ffffff,fill:#354823;
   classDef outdated stroke:#000000,color:#000000,fill:#78B7C5;
@@ -163,3 +165,11 @@ graph LR
   linkStyle 53 stroke-width:0px;
   linkStyle 54 stroke-width:0px;
 ```
+
+### renv
+
+This project uses
+[`renv`](https://rstudio.github.io/renv/articles/renv.html) for package
+management. When opening this project as an RStudio Project for the
+first time, `renv` should automatically install itself and prompt you to
+run `renv::restore()` to install all package dependencies.

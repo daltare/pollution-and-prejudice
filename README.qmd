@@ -34,6 +34,8 @@ The primary results are available in the `tar_data_results/redline_CES_scores.gp
 
 ## Reproducibility
 
+### Targets
+
 This project uses the [`targets` package](https://docs.ropensci.org/targets/) for workflow management. The entire workflow is defined and managed through the [\_targets.R](_targets.R) file.
 
 Run `targets::tar_make()` from the console to run the workflow and reproduce all results. For some more pointers on using the `targets` package, see the [targets_notes.md](targets_notes.md) file.
@@ -52,3 +54,7 @@ cat(
 )
 #this should display correctly on GitHub, or code can be pasted into https://mermaid.live
 ```
+
+### renv
+
+This project uses [`renv`](https://rstudio.github.io/renv/articles/renv.html) for package management. When opening this project as an RStudio Project for the first time, `renv` should automatically install itself and prompt you to run `renv::restore()` to install all package dependencies.
