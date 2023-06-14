@@ -14,6 +14,7 @@ suppressPackageStartupMessages(library(here))
 library(targets)
 library(tidyverse)
 library(sf)
+library(gt)
 ```
 
 ## Background
@@ -176,7 +177,8 @@ missing_summary_all <- ces_scores_missing_check %>%
                                 nsmall = 2)) %>%
     mutate(pct_missing = paste0(as.character(pct_missing), '%'))
 
-missing_summary_all
+missing_summary_all %>% 
+    gt()
 ```
 
 

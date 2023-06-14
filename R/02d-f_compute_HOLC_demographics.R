@@ -83,7 +83,7 @@ f_compute_HOLC_demographics <- function(sf_formatted_ces_data,
     df_ces_clipped_demographics_long <- ces_data_clipped %>% 
         st_drop_geometry() %>% 
         select(census_tract_2010, total_population_2019_acs,
-               holc_id:holc_id_unique,
+               holc_id_unique:holc_city,
                n_ces_components_in_holc,           
                ces_area_clipped, ces_area_total,
                ces_population_clipped, 

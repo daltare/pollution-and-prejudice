@@ -62,7 +62,7 @@ f_compute_HOLC_CES_scores <- function(sf_formatted_ces_data,
     df_ces_clipped_scores_long <- ces_data_clipped %>% 
         st_drop_geometry() %>% 
         select(census_tract_2010, 
-               holc_id:holc_area, 
+               holc_id_unique:holc_area, 
                n_ces_components_in_holc,
                ces_area_clipped, ces_area_total,
                ends_with(c('_score', 'score_scaled'))) %>% 

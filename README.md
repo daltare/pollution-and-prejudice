@@ -76,7 +76,7 @@ small numbers of neighborhoods in isolation.
 
 ## Reproducibility
 
-### Targets
+### Workflow - {targets}
 
 This project uses the [`targets`
 package](https://docs.ropensci.org/targets/) for workflow management.
@@ -117,13 +117,13 @@ graph LR
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate
     xd22b3ef3698af9c3>"f_plot_race_bars_by_group"]:::uptodate --> xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate
-    xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
-    xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
-    xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
-    x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
-    x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
-    xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
-    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::uptodate
+    xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
+    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
     xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::uptodate --> xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate
     x1909355c81c03a12>"f_check_missing_CES_scores"]:::uptodate --> xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate
     x6a4e5ab768f76050>"f_plot_scores_points_raw"]:::uptodate --> xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::uptodate
@@ -143,7 +143,7 @@ graph LR
     x6538bfb2bd8fa5af(["raw_ces_data_file"]):::uptodate --> x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate
     x9fc5d9228e2f8c78>"f_plot_scores_box_departure_legend"]:::uptodate --> xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate
-    xf443f725966ed075{{"last_report_update"}}:::uptodate --> x3b5990520b2e818d(["summary_report_html"]):::uptodate
+    xf443f725966ed075{{"last_report_update"}}:::uptodate --> x3b5990520b2e818d(["summary_report_html"]):::outdated
     xc11e093e8a0331b6>"f_plot_map_panels"]:::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
     x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
@@ -166,7 +166,7 @@ graph LR
   linkStyle 54 stroke-width:0px;
 ```
 
-### renv
+### Package Management - {renv}
 
 This project uses
 [`renv`](https://rstudio.github.io/renv/articles/renv.html) for package

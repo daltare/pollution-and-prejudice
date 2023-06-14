@@ -32,8 +32,12 @@ f_combine_computed_data <- function(df_holc_ces_scores_summary,
     sf_combined_summary <- df_combined_summary %>% 
         left_join(sf_formatted_holc_data %>% 
                       st_transform(projected_crs) %>% 
-                      select(holc_id_unique, starts_with('geom')),
+                      select(holc_id_unique, holc_year, holc_url, 
+                             holc_area_description_excerpts,
+                             starts_with('geom')),
                   by = 'holc_id_unique') %>% 
+        relocate(holc_year, holc_url, 
+                 holc_area_description_excerpts, .after = holc_id) %>% 
         st_as_sf()
     
     ## save to geopackage file ----

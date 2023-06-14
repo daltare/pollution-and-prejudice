@@ -28,6 +28,8 @@ tar_option_set(
                  'tools',
                  'httr',
                  'sf',
+                 'jsonlite',
+                 'geojsonsf',
                  'tigris',
                  'rmapshaper',
                  'units',
@@ -38,7 +40,8 @@ tar_option_set(
                  'ceramic', 
                  'rosm',
                  'sp',
-                 'quarto'
+                 'quarto',
+                 'gt'
     ), 
     # default storage format
     format = "rds",
@@ -47,7 +50,7 @@ tar_option_set(
     # for debugging (if needed) - on error, call tar_workspace() to load the workspace
     workspace_on_error = TRUE,
     # for saving workspaces for specific targets (can be useful for development / debugging)
-    workspaces = NULL # c('plot_map_panels') # enter names of targets to save workspaces for - call tar_workspace() to load the workspace
+    workspaces = NULL # c('sf_formatted_holc_data') # enter names of targets to save workspaces for - call tar_workspace() to load the workspace
 )
 
 ## parallel options (set by targets) ---- 
@@ -94,12 +97,18 @@ list(
     #### 01b - HOLC (redline) data ----
     tar_target(name = raw_holc_data_files,
                command = f_download_raw_holc_data(
-                   url_base = 'https://dsl.richmond.edu/panorama/redlining/static/downloads/shapefiles/', 
+                   url_base = 'https://dsl.richmond.edu/panorama/redlining/static/downloads/', 
                    download_directory = 'tar_data_raw/holc_data')
+    ),
+    tar_target(name = holc_area_descriptions,
+               command = f_parse_holc_descriptions(
+                   raw_holc_data_files, 
+                   output_directory = 'tar_data_processed/holc_data/area_descriptions')
     ),
     tar_target(name = sf_formatted_holc_data,
                command = f_process_holc_data(
                    raw_holc_data_files,
+                   holc_area_descriptions,
                    output_file_name = 'redline_maps_processed',
                    output_directory = 'tar_data_processed/holc_data')
     ),
@@ -225,15 +234,16 @@ list(
     
     ### 05 - create reports / presentations ------------------------------------
     tar_quarto(name = summary_report, 
-               path = 'tar_reports/summary_report.qmd'),
+               path = 'tar_reports/summary_report.qmd'
+    ),
     tar_target(name = summary_report_html, 
                command = {
                    # force this to re-run if the qmd file has changed
                    last_report_update
                    # render
                    quarto_render(input = 'tar_reports/summary_report.qmd', 
-                                       output_format = 'html')
-                   },
+                                 output_format = 'html')
+               },
                format = 'file'),
     tar_quarto(name = targets_notes_file, 
                path = 'targets_notes.qmd'),
