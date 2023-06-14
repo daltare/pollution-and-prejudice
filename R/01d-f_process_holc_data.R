@@ -57,7 +57,7 @@ f_process_holc_data <- function(raw_holc_data_files,
     # unzip raw data to temporary directory & read into R ----------------------
     
     ## create temp directory
-    temp_dir <- tempdir()
+    # temp_dir <- tempdir()
     
     ## loop through files, unzip, and read into combined data frame
     ### shapefiles ----
@@ -132,7 +132,8 @@ f_process_holc_data <- function(raw_holc_data_files,
     ## add parsed HOLC area description excerpts ----
     sf_redline_maps <- sf_redline_maps %>% 
         left_join(holc_area_descriptions %>% 
-                      select(holc_city = city, 
+                      filter(!is.na(holc_id)) %>% 
+                      select(holc_city, 
                              holc_id, 
                              holc_area_description_excerpts = area_description_excerpts),
                   by = c('holc_city', 'holc_id'))

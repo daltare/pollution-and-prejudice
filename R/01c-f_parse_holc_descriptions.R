@@ -40,9 +40,9 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
                                            select(-area_description_data), 
                                        geojson_fr$properties$area_description_data)
         df_description_fr <- df_description_fr %>% 
-            mutate(city = 'Fresno') %>% 
+            mutate(holc_city = 'Fresno') %>% 
             rename('area_description' = '1') %>% 
-            select(c('city', 
+            select(c('holc_city', 
                      "holc_id", "name", "holc_grade",
                      'area_description'))
         ## sort rows
@@ -76,9 +76,9 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
                                            select(-area_description_data), 
                                        geojson_sd$properties$area_description_data)
         df_description_sd <- df_description_sd %>% 
-            mutate(city = 'San Diego') %>% 
+            mutate(holc_city = 'SanDiego') %>% 
             rename('area_description' = '1') %>% 
-            select(c('city', 
+            select(c('holc_city', 
                      "holc_id", "name", "holc_grade",
                      'area_description'))
         # sort rows
@@ -111,9 +111,9 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
         df_description_sf <- bind_cols(geojson_sf$properties %>% select(-area_description_data), 
                                        geojson_sf$properties$area_description_data)
         df_description_sf <- df_description_sf %>% 
-            mutate(city = 'San Francisco') %>% 
+            mutate(holc_city = 'SanFrancisco') %>% 
             rename('area_description' = '1') %>% 
-            select(c('city', 
+            select(c('holc_city', 
                      "holc_id", "name", "holc_grade",
                      'area_description'))
         # sort rows
@@ -160,8 +160,8 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
         
         # dput(sort(names(df_description_la)))
         df_description_la <- df_description_la %>% 
-            mutate(city = 'Los Angeles') %>% 
-            select(c('city',
+            mutate(holc_city = 'LosAngeles') %>% 
+            select(c('holc_city',
                      "0", "holc_id", "name", "holc_grade", 
                      "1a", "1b", "1c", "1d", "1e", "2", "2a", "2b", "2c", 
                      "2d", "2e", "2f", "2g", "2h", "2i", "2j", "2k", "2l", "2m", "2n", 
@@ -247,8 +247,8 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
                                         geojson_sac$properties$area_description_data)
         # dput(sort(names(df_description_sac)))
         df_description_sac <- df_description_sac %>% 
-            mutate(city = 'Sacramento') %>% 
-            select(c('city', 
+            mutate(holc_city = 'Sacramento') %>% 
+            select(c('holc_city', 
                      "0", "holc_id", "name", "holc_grade", 
                      "1a", "1b", "1c", "1d", "1e", 
                      "2a", "2b", "2c", "2d", "2e", "2f", "2g", 
@@ -326,8 +326,8 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
                                         geojson_stk$properties$area_description_data)
         # dput(sort(names(df_properties_3)))
         df_description_stk <- df_description_stk %>% 
-            mutate(city = 'Stockton') %>% 
-            select(c('city', #"0", 
+            mutate(holc_city = 'Stockton') %>% 
+            select(c('holc_city', #"0", 
                      "holc_id", "name", "holc_grade", 
                      "1a", "1b", "1c", "1d", "1e", 
                      '2 ',
@@ -410,8 +410,8 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
         df_description_oak <- df_description_oak[-1, ]
         # dput(sort(names(df_description_oak)))
         df_description_oak <- df_description_oak %>% 
-            mutate(city = 'Oakland') %>% 
-            select(c('city', #"0", 
+            mutate(holc_city = 'Oakland') %>% 
+            select(c('holc_city', #"0", 
                      "holc_id", "name", "holc_grade", 
                      '1', '2', '3', '4',
                      "5a", "5b", "5c", "5d", "5e", "5f", "5g", 
@@ -490,8 +490,8 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
                                        geojson_sj$properties$area_description_data)
         # dput(sort(names(df_description_sj)))
         df_description_sj <- df_description_sj %>% 
-            mutate(city = 'San Jose') %>% 
-            select(c('city', #"0", 
+            mutate(holc_city = 'SanJose') %>% 
+            select(c('holc_city', #"0", 
                      "holc_id", "name", "holc_grade", 
                      '1', '2', '3', '4',
                      "5a", "5b", "5c", "5d", "5e", "5f", "5g", 
@@ -571,9 +571,9 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
     ## in the popup for each holc polygon)
     df_description_combined <- df_description_combined %>% 
         mutate(area_description_excerpts = case_when(
-            city == 'Fresno' | city == 'San Francisco' | city == 'San Diego' | city == 'Los Angeles' ~
+            holc_city %in% c('Fresno', 'SanFrancisco', 'SanDiego', 'LosAngeles') ~
                 area_description,
-            city == 'Oakland' | city == 'Sacramento' | city == 'San Jose' | city == 'Stockton' ~
+            holc_city %in% c('Oakland', 'Sacramento', 'SanJose', 'Stockton') ~
                 as.character(
                     glue('FAVORABLE INFLUENCES: {area_favorable_influences} | DETRIMENTAL INFLUENCES: {area_detrimental_influences} | CLARIFYING REMARKS: {clarifying_remarks}')
                 ),
