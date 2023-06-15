@@ -149,34 +149,40 @@ targets::tar_read(plot_race_bars_by_group,
 
 To test the sensitivity of the estimated CES scores to the method used to compute the scores, we also estimated the overall CES score for each HOLC neighborhood using an alternative method - nearest centroid matching - and compared the results to those obtained from our original area weighted average method. This nearest centroid approach finds the CES census tract (excluding tracts without CES scores) whose centriod is closest to the centroid of each HOLC neighborhood, and assigns the CES score of the matched census tract to that HOLC neighborhood. If the results from the two methods are substantially the same, we can infer that the estimated CES scores are not highly sensitive to different calculation methods, and therefore have greater confidence in our estimated CES scores.
 
-fig-score-method-comparison shows how the CES scores estimated for each HOLC neighborhood using the two methods compare across all HOLC grades. 
+@fig-score-method-comparison shows how the CES scores estimated for each HOLC neighborhood using the two methods compare across all HOLC grades. 
 
 ```{r}
 #| label: fig-score-method-comparison
 #| fig-cap: "Comparison of CES scores computed with the area weighted average and nearest centroid methods."
 #| warning: false
-##| fig-height: 6
-##| fig-width: 6
-##| out-width: 5in
-##| out-height: 5in
 #| fig-height: 6
-#| fig-width: 10
+#| fig-width: 6
+#| out-width: 5in
+#| out-height: 5in
 #| fig-dpi: 300
 #| echo: false
+
+# fig-height: 6
+# fig-width: 10
 
 targets::tar_read(plot_scores_method_comparison_scatter,
                   store = here::here(tar_config_get('store'))) # allows for manual rendering
 ```
 
-fig-score-method-comparison-facet shows how the CES scores estimated for each HOLC neighborhood using the two methods compare for each of the four HOLC grades individually.
+@fig-score-method-comparison-facet shows how the CES scores estimated for each HOLC neighborhood using the two methods compare for each of the four HOLC grades individually.
 ```{r}
 #| label: fig-score-method-comparison-facet
 #| fig-cap: "Comparison of CES scores computed with the area weighted average and nearest centroid methods, by HOLC grade."
 #| warning: false
 #| fig-height: 6
-#| fig-width: 10
+#| fig-width: 6
+#| out-width: 5in
+#| out-height: 5in
 #| fig-dpi: 300
 #| echo: false
+
+# fig-height: 6
+# fig-width: 10
 
 targets::tar_read(plot_scores_method_comparison_scatter_facet,
                   store = here::here(tar_config_get('store'))) # allows for manual rendering

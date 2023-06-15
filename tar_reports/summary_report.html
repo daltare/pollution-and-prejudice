@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -212,34 +178,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="comparison-of-alternative-methods-for-estimating-ces-scores" class="level2">
 <h2 class="anchored" data-anchor-id="comparison-of-alternative-methods-for-estimating-ces-scores">Comparison of Alternative Methods for Estimating CES Scores</h2>
 <p>To test the sensitivity of the estimated CES scores to the method used to compute the scores, we also estimated the overall CES score for each HOLC neighborhood using an alternative method - nearest centroid matching - and compared the results to those obtained from our original area weighted average method. This nearest centroid approach finds the CES census tract (excluding tracts without CES scores) whose centriod is closest to the centroid of each HOLC neighborhood, and assigns the CES score of the matched census tract to that HOLC neighborhood. If the results from the two methods are substantially the same, we can infer that the estimated CES scores are not highly sensitive to different calculation methods, and therefore have greater confidence in our estimated CES scores.</p>
-<p>fig-score-method-comparison shows how the CES scores estimated for each HOLC neighborhood using the two methods compare across all HOLC grades.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">##| fig-height: 6</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">##| fig-width: 6</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">##| out-width: 5in</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">##| out-height: 5in</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-dpi: 300</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>targets<span class="sc">::</span><span class="fu">tar_read</span>(plot_scores_method_comparison_scatter,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">store =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="fu">tar_config_get</span>(<span class="st">'store'</span>))) <span class="co"># allows for manual rendering</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="#fig-score-method-comparison">Figure&nbsp;7</a> shows how the CES scores estimated for each HOLC neighborhood using the two methods compare across all HOLC grades.</p>
+<div class="cell" data-fig.dpi="300">
 <div class="cell-output-display">
 <div id="fig-score-method-comparison" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-score-method-comparison-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="summary_report_files/figure-html/fig-score-method-comparison-1.png" style="width:5in;height:5in" class="figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;7: Comparison of CES scores computed with the area weighted average and nearest centroid methods.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>fig-score-method-comparison-facet shows how the CES scores estimated for each HOLC neighborhood using the two methods compare for each of the four HOLC grades individually.</p>
+<p><a href="#fig-score-method-comparison-facet">Figure&nbsp;8</a> shows how the CES scores estimated for each HOLC neighborhood using the two methods compare for each of the four HOLC grades individually.</p>
 <div class="cell" data-fig.dpi="300">
 <div class="cell-output-display">
 <div id="fig-score-method-comparison-facet" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-score-method-comparison-facet-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="summary_report_files/figure-html/fig-score-method-comparison-facet-1.png" style="width:5in;height:5in" class="figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;8: Comparison of CES scores computed with the area weighted average and nearest centroid methods, by HOLC grade.</figcaption>
 </figure>
 </div>

@@ -48,7 +48,7 @@ This figure provides a visualization of the workflow defined in the [\_targets.R
 
 cat(
     "```mermaid",
-    suppressMessages(targets::tar_mermaid(targets_only = FALSE, )),
+    suppressMessages(targets::tar_mermaid(targets_only = FALSE)),
     "```",
     sep = "\n"
 )

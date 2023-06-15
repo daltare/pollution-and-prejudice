@@ -127,35 +127,22 @@ that the estimated CES scores are not highly sensitive to different
 calculation methods, and therefore have greater confidence in our
 estimated CES scores.
 
-fig-score-method-comparison shows how the CES scores estimated for each
-HOLC neighborhood using the two methods compare across all HOLC grades.
-
-``` r
-##| fig-height: 6
-##| fig-width: 6
-##| out-width: 5in
-##| out-height: 5in
-#| fig-height: 6
-#| fig-width: 10
-#| fig-dpi: 300
-#| echo: false
-
-targets::tar_read(plot_scores_method_comparison_scatter,
-                  store = here::here(tar_config_get('store'))) # allows for manual rendering
-```
+[Figure 7](#fig-score-method-comparison) shows how the CES scores
+estimated for each HOLC neighborhood using the two methods compare
+across all HOLC grades.
 
 <img
 src="summary_report_files/figure-commonmark/fig-score-method-comparison-1.png"
-id="fig-score-method-comparison"
+id="fig-score-method-comparison" style="width:5in;height:5in"
 alt="Figure 7: Comparison of CES scores computed with the area weighted average and nearest centroid methods." />
 
-fig-score-method-comparison-facet shows how the CES scores estimated for
-each HOLC neighborhood using the two methods compare for each of the
-four HOLC grades individually.
+[Figure 8](#fig-score-method-comparison-facet) shows how the CES scores
+estimated for each HOLC neighborhood using the two methods compare for
+each of the four HOLC grades individually.
 
 <img
 src="summary_report_files/figure-commonmark/fig-score-method-comparison-facet-1.png"
-id="fig-score-method-comparison-facet"
+id="fig-score-method-comparison-facet" style="width:5in;height:5in"
 alt="Figure 8: Comparison of CES scores computed with the area weighted average and nearest centroid methods, by HOLC grade." />
 
 ## Summary of HOLC Neighborhoods with Missing CES Scores
