@@ -173,10 +173,13 @@ Because some census tracts that are not assigned a CES score overlap with some H
 
 In our analysis, we use a minimum coverage threshold of `r ces_coverage_threshold`. Using this threshold, there are `r nrow(missing_ces)` HOLC neighborhoods which fall below the threshold, and are not assigned a CES 4.0 score (i.e., they are given an `NA` value). 
 
-The table below provides a summary of the number of HOLC neighborhoods with missing CES scores by CES measure and HOLC grade.
+@tbl-missing-scores provides a summary of the number of HOLC neighborhoods with missing CES scores by CES measure and HOLC grade.
 
 ```{r}
 #| echo: false
+#| message: false
+#| warning: false
+
 sf_combined_results <- targets::tar_read(sf_combined_results,
                                          store = here::here(tar_config_get('store'))) # allows for manual rendering
 
@@ -193,13 +196,19 @@ missing_summary_all <- ces_scores_missing_check %>%
                                       digits = 2), 
                                 nsmall = 2)) %>%
     mutate(pct_missing = paste0(as.character(pct_missing), '%'))
+```
+
+
+```{r}
+#| label: tbl-missing-scores
+#| tbl-cap: "Summary of missing HOLC neighborhoods which are not assigned CES scores. "
 
 missing_summary_all %>% 
     gt()
 ```
 
 
-## Comparison of Alternative Methods
+## Comparison of Alternative Methods for Estimating CES Scores
 
 To test the sensitivity of the estimated CES scores to the method used to compute the scores, we also estimated the overall CES score for each HOLC neighborhood using an alternative method - nearest centroid matching - and compared the results to those obtained from our original area weighted average method. This nearest centroid approach finds the CES census tract (excluding tracts without CES scores) whose centriod is closest to the centroid of each HOLC neighborhood, and assigns the CES score of the matched census tract to that HOLC neighborhood. If the results from the two methods are substantially the same, we can infer that the estimated CES scores are not highly sensitive to different calculation methods, and therefore have greater confidence in our estimated CES scores.
 
