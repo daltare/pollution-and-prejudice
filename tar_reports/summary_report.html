@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -209,35 +175,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="missing-scores" class="level2">
-<h2 class="anchored" data-anchor-id="missing-scores">Missing Scores</h2>
+<section id="comparison-of-alternative-methods-for-estimating-ces-scores" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-alternative-methods-for-estimating-ces-scores">Comparison of Alternative Methods for Estimating CES Scores</h2>
+<p>To test the sensitivity of the estimated CES scores to the method used to compute the scores, we also estimated the overall CES score for each HOLC neighborhood using an alternative method - nearest centroid matching - and compared the results to those obtained from our original area weighted average method. This nearest centroid approach finds the CES census tract (excluding tracts without CES scores) whose centriod is closest to the centroid of each HOLC neighborhood, and assigns the CES score of the matched census tract to that HOLC neighborhood. If the results from the two methods are substantially the same, we can infer that the estimated CES scores are not highly sensitive to different calculation methods, and therefore have greater confidence in our estimated CES scores.</p>
+<p>fig-score-method-comparison shows how the CES scores estimated for each HOLC neighborhood using the two methods compare across all HOLC grades.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-score-method-comparison" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="summary_report_files/figure-html/fig-score-method-comparison-1.png" class="img-fluid figure-img" width="1800"></p>
+<figcaption class="figure-caption">Figure&nbsp;7: Comparison of CES scores computed with the area weighted average and nearest centroid methods.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>fig-score-method-comparison-facet shows how the CES scores estimated for each HOLC neighborhood using the two methods compare for each of the four HOLC grades individually.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-score-method-comparison-facet" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="summary_report_files/figure-html/fig-score-method-comparison-facet-1.png" class="img-fluid figure-img" width="1800"></p>
+<figcaption class="figure-caption">Figure&nbsp;8: Comparison of CES scores computed with the area weighted average and nearest centroid methods, by HOLC grade.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="summary-of-holc-neighborhoods-with-missing-ces-scores" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-holc-neighborhoods-with-missing-ces-scores">Summary of HOLC Neighborhoods with Missing CES Scores</h2>
 <p>Some census tracts are not assigned a score for individual CES 4.0 indicators, or an overall CES 4.0 score. Of the 8035 total census tracts contained the in CES dataset, there are 103 tracts with missing overall CES scores, and varying numbers of tracts with missing scores for individual indicators - this includes 23 tracts with zero population.</p>
 <p>Because some census tracts that are not assigned a CES score overlap with some HOLC neighborhoods, a minimum coverage threshold (as a percent of each HOLC neighborhood area covered by CES tracts with scores) is applied to determine which HOLC neighborhoods to assign CES scores to. A HOLC neighborhood is only assigned a CES score if the area covered by CES tracts with scores exceeds the minimum coverage threshold; otherwise, the HOLC neighborhood is assigned a NA (i.e., missing) value.</p>
 <p>In our analysis, we use a minimum coverage threshold of 0.5. Using this threshold, there are 3 HOLC neighborhoods which fall below the threshold, and are not assigned a CES 4.0 score (i.e., they are given an <code>NA</code> value).</p>
 <p><a href="#tbl-missing-scores">Table&nbsp;1</a> provides a summary of the number of HOLC neighborhoods with missing CES scores by CES measure and HOLC grade.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>missing_summary_all <span class="sc">%&gt;%</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="tbl-missing-scores" class="anchored">
 
-<div id="jahtgkchbz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jahtgkchbz table {
+<div id="zgffffnhmy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zgffffnhmy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jahtgkchbz thead, #jahtgkchbz tbody, #jahtgkchbz tfoot, #jahtgkchbz tr, #jahtgkchbz td, #jahtgkchbz th {
+#zgffffnhmy thead, #zgffffnhmy tbody, #zgffffnhmy tfoot, #zgffffnhmy tr, #zgffffnhmy td, #zgffffnhmy th {
   border-style: none;
 }
 
-#jahtgkchbz p {
+#zgffffnhmy p {
   margin: 0;
   padding: 0;
 }
 
-#jahtgkchbz .gt_table {
+#zgffffnhmy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -263,12 +253,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#jahtgkchbz .gt_caption {
+#zgffffnhmy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jahtgkchbz .gt_title {
+#zgffffnhmy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -280,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#jahtgkchbz .gt_subtitle {
+#zgffffnhmy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -292,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#jahtgkchbz .gt_heading {
+#zgffffnhmy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -304,13 +294,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#jahtgkchbz .gt_bottom_border {
+#zgffffnhmy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jahtgkchbz .gt_col_headings {
+#zgffffnhmy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -325,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#jahtgkchbz .gt_col_heading {
+#zgffffnhmy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -345,7 +335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#jahtgkchbz .gt_column_spanner_outer {
+#zgffffnhmy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -357,15 +347,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#jahtgkchbz .gt_column_spanner_outer:first-child {
+#zgffffnhmy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jahtgkchbz .gt_column_spanner_outer:last-child {
+#zgffffnhmy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jahtgkchbz .gt_column_spanner {
+#zgffffnhmy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -377,11 +367,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#jahtgkchbz .gt_spanner_row {
+#zgffffnhmy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jahtgkchbz .gt_group_heading {
+#zgffffnhmy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -407,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#jahtgkchbz .gt_empty_group_heading {
+#zgffffnhmy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -422,15 +412,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#jahtgkchbz .gt_from_md > :first-child {
+#zgffffnhmy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jahtgkchbz .gt_from_md > :last-child {
+#zgffffnhmy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jahtgkchbz .gt_row {
+#zgffffnhmy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -449,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#jahtgkchbz .gt_stub {
+#zgffffnhmy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -462,7 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#jahtgkchbz .gt_stub_row_group {
+#zgffffnhmy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -476,15 +466,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#jahtgkchbz .gt_row_group_first td {
+#zgffffnhmy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jahtgkchbz .gt_row_group_first th {
+#zgffffnhmy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jahtgkchbz .gt_summary_row {
+#zgffffnhmy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -494,16 +484,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#jahtgkchbz .gt_first_summary_row {
+#zgffffnhmy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jahtgkchbz .gt_first_summary_row.thick {
+#zgffffnhmy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jahtgkchbz .gt_last_summary_row {
+#zgffffnhmy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -513,7 +503,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#jahtgkchbz .gt_grand_summary_row {
+#zgffffnhmy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -523,7 +513,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#jahtgkchbz .gt_first_grand_summary_row {
+#zgffffnhmy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -533,7 +523,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#jahtgkchbz .gt_last_grand_summary_row_top {
+#zgffffnhmy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -543,11 +533,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#jahtgkchbz .gt_striped {
+#zgffffnhmy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jahtgkchbz .gt_table_body {
+#zgffffnhmy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -556,7 +546,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#jahtgkchbz .gt_footnotes {
+#zgffffnhmy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -570,7 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#jahtgkchbz .gt_footnote {
+#zgffffnhmy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -579,7 +569,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#jahtgkchbz .gt_sourcenotes {
+#zgffffnhmy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -593,7 +583,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#jahtgkchbz .gt_sourcenote {
+#zgffffnhmy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -601,63 +591,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#jahtgkchbz .gt_left {
+#zgffffnhmy .gt_left {
   text-align: left;
 }
 
-#jahtgkchbz .gt_center {
+#zgffffnhmy .gt_center {
   text-align: center;
 }
 
-#jahtgkchbz .gt_right {
+#zgffffnhmy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jahtgkchbz .gt_font_normal {
+#zgffffnhmy .gt_font_normal {
   font-weight: normal;
 }
 
-#jahtgkchbz .gt_font_bold {
+#zgffffnhmy .gt_font_bold {
   font-weight: bold;
 }
 
-#jahtgkchbz .gt_font_italic {
+#zgffffnhmy .gt_font_italic {
   font-style: italic;
 }
 
-#jahtgkchbz .gt_super {
+#zgffffnhmy .gt_super {
   font-size: 65%;
 }
 
-#jahtgkchbz .gt_footnote_marks {
+#zgffffnhmy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jahtgkchbz .gt_asterisk {
+#zgffffnhmy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jahtgkchbz .gt_indent_1 {
+#zgffffnhmy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jahtgkchbz .gt_indent_2 {
+#zgffffnhmy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jahtgkchbz .gt_indent_3 {
+#zgffffnhmy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jahtgkchbz .gt_indent_4 {
+#zgffffnhmy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jahtgkchbz .gt_indent_5 {
+#zgffffnhmy .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -814,32 +804,6 @@ scores.</p> </caption>
   
 </table>
 </div>
-</div>
-</div>
-</div>
-</section>
-<section id="comparison-of-alternative-methods-for-estimating-ces-scores" class="level2">
-<h2 class="anchored" data-anchor-id="comparison-of-alternative-methods-for-estimating-ces-scores">Comparison of Alternative Methods for Estimating CES Scores</h2>
-<p>To test the sensitivity of the estimated CES scores to the method used to compute the scores, we also estimated the overall CES score for each HOLC neighborhood using an alternative method - nearest centroid matching - and compared the results to those obtained from our original area weighted average method. This nearest centroid approach finds the CES census tract (excluding tracts without CES scores) whose centriod is closest to the centroid of each HOLC neighborhood, and assigns the CES score of the matched census tract to that HOLC neighborhood. If the results from the two methods are substantially the same, we can infer that the estimated CES scores are not highly sensitive to different calculation methods, and therefore have greater confidence in our estimated CES scores.</p>
-<p>fig-score-method-comparison shows how the CES scores estimated for each HOLC neighborhood using the two methods compare across all HOLC grades.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-score-method-comparison" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-score-method-comparison-1.png" class="img-fluid figure-img" width="1800"></p>
-<figcaption class="figure-caption">Figure&nbsp;7: Comparison of CES scores computed with the area weighted average and nearest centroid methods.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>fig-score-method-comparison-facet shows how the CES scores estimated for each HOLC neighborhood using the two methods compare for each of the four HOLC grades individually.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-score-method-comparison-facet" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-score-method-comparison-facet-1.png" class="img-fluid figure-img" width="1800"></p>
-<figcaption class="figure-caption">Figure&nbsp;8: Comparison of CES scores computed with the area weighted average and nearest centroid methods, by HOLC grade.</figcaption>
-</figure>
 </div>
 </div>
 </div>

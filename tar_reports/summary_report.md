@@ -112,7 +112,39 @@ src="summary_report_files/figure-commonmark/fig-demographics-race-1.png"
 id="fig-demographics-race"
 alt="Figure 6: Estimated present-day distribution of racial/ethnic groups across HOLC grades." />
 
-## Missing Scores
+## Comparison of Alternative Methods for Estimating CES Scores
+
+To test the sensitivity of the estimated CES scores to the method used
+to compute the scores, we also estimated the overall CES score for each
+HOLC neighborhood using an alternative method - nearest centroid
+matching - and compared the results to those obtained from our original
+area weighted average method. This nearest centroid approach finds the
+CES census tract (excluding tracts without CES scores) whose centriod is
+closest to the centroid of each HOLC neighborhood, and assigns the CES
+score of the matched census tract to that HOLC neighborhood. If the
+results from the two methods are substantially the same, we can infer
+that the estimated CES scores are not highly sensitive to different
+calculation methods, and therefore have greater confidence in our
+estimated CES scores.
+
+fig-score-method-comparison shows how the CES scores estimated for each
+HOLC neighborhood using the two methods compare across all HOLC grades.
+
+<img
+src="summary_report_files/figure-commonmark/fig-score-method-comparison-1.png"
+id="fig-score-method-comparison"
+alt="Figure 7: Comparison of CES scores computed with the area weighted average and nearest centroid methods." />
+
+fig-score-method-comparison-facet shows how the CES scores estimated for
+each HOLC neighborhood using the two methods compare for each of the
+four HOLC grades individually.
+
+<img
+src="summary_report_files/figure-commonmark/fig-score-method-comparison-facet-1.png"
+id="fig-score-method-comparison-facet"
+alt="Figure 8: Comparison of CES scores computed with the area weighted average and nearest centroid methods, by HOLC grade." />
+
+## Summary of HOLC Neighborhoods with Missing CES Scores
 
 Some census tracts are not assigned a score for individual CES 4.0
 indicators, or an overall CES 4.0 score. Of the 8035 total census tracts
@@ -136,25 +168,20 @@ threshold, and are not assigned a CES 4.0 score (i.e., they are given an
 **?@tbl-missing-scores** provides a summary of the number of HOLC
 neighborhoods with missing CES scores by CES measure and HOLC grade.
 
-``` r
-missing_summary_all %>% 
-    gt()
-```
-
-<div id="telbdbcife" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#telbdbcife table {
+<div id="jdmfvdxncw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jdmfvdxncw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#telbdbcife thead, #telbdbcife tbody, #telbdbcife tfoot, #telbdbcife tr, #telbdbcife td, #telbdbcife th {
+&#10;#jdmfvdxncw thead, #jdmfvdxncw tbody, #jdmfvdxncw tfoot, #jdmfvdxncw tr, #jdmfvdxncw td, #jdmfvdxncw th {
   border-style: none;
 }
-&#10;#telbdbcife p {
+&#10;#jdmfvdxncw p {
   margin: 0;
   padding: 0;
 }
-&#10;#telbdbcife .gt_table {
+&#10;#jdmfvdxncw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -179,11 +206,11 @@ missing_summary_all %>%
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#telbdbcife .gt_caption {
+&#10;#jdmfvdxncw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#telbdbcife .gt_title {
+&#10;#jdmfvdxncw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -194,7 +221,7 @@ missing_summary_all %>%
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#telbdbcife .gt_subtitle {
+&#10;#jdmfvdxncw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -205,7 +232,7 @@ missing_summary_all %>%
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#telbdbcife .gt_heading {
+&#10;#jdmfvdxncw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -216,12 +243,12 @@ missing_summary_all %>%
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#telbdbcife .gt_bottom_border {
+&#10;#jdmfvdxncw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#telbdbcife .gt_col_headings {
+&#10;#jdmfvdxncw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -235,7 +262,7 @@ missing_summary_all %>%
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#telbdbcife .gt_col_heading {
+&#10;#jdmfvdxncw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -254,7 +281,7 @@ missing_summary_all %>%
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#telbdbcife .gt_column_spanner_outer {
+&#10;#jdmfvdxncw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -265,13 +292,13 @@ missing_summary_all %>%
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#telbdbcife .gt_column_spanner_outer:first-child {
+&#10;#jdmfvdxncw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#telbdbcife .gt_column_spanner_outer:last-child {
+&#10;#jdmfvdxncw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#telbdbcife .gt_column_spanner {
+&#10;#jdmfvdxncw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -282,10 +309,10 @@ missing_summary_all %>%
   display: inline-block;
   width: 100%;
 }
-&#10;#telbdbcife .gt_spanner_row {
+&#10;#jdmfvdxncw .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#telbdbcife .gt_group_heading {
+&#10;#jdmfvdxncw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -310,7 +337,7 @@ missing_summary_all %>%
   vertical-align: middle;
   text-align: left;
 }
-&#10;#telbdbcife .gt_empty_group_heading {
+&#10;#jdmfvdxncw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -324,13 +351,13 @@ missing_summary_all %>%
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#telbdbcife .gt_from_md > :first-child {
+&#10;#jdmfvdxncw .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#telbdbcife .gt_from_md > :last-child {
+&#10;#jdmfvdxncw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#telbdbcife .gt_row {
+&#10;#jdmfvdxncw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -348,7 +375,7 @@ missing_summary_all %>%
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#telbdbcife .gt_stub {
+&#10;#jdmfvdxncw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -360,7 +387,7 @@ missing_summary_all %>%
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#telbdbcife .gt_stub_row_group {
+&#10;#jdmfvdxncw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -373,13 +400,13 @@ missing_summary_all %>%
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#telbdbcife .gt_row_group_first td {
+&#10;#jdmfvdxncw .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#telbdbcife .gt_row_group_first th {
+&#10;#jdmfvdxncw .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#telbdbcife .gt_summary_row {
+&#10;#jdmfvdxncw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -388,14 +415,14 @@ missing_summary_all %>%
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#telbdbcife .gt_first_summary_row {
+&#10;#jdmfvdxncw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#telbdbcife .gt_first_summary_row.thick {
+&#10;#jdmfvdxncw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#telbdbcife .gt_last_summary_row {
+&#10;#jdmfvdxncw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -404,7 +431,7 @@ missing_summary_all %>%
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#telbdbcife .gt_grand_summary_row {
+&#10;#jdmfvdxncw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -413,7 +440,7 @@ missing_summary_all %>%
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#telbdbcife .gt_first_grand_summary_row {
+&#10;#jdmfvdxncw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -422,7 +449,7 @@ missing_summary_all %>%
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#telbdbcife .gt_last_grand_summary_row_top {
+&#10;#jdmfvdxncw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -431,10 +458,10 @@ missing_summary_all %>%
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#telbdbcife .gt_striped {
+&#10;#jdmfvdxncw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#telbdbcife .gt_table_body {
+&#10;#jdmfvdxncw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -442,7 +469,7 @@ missing_summary_all %>%
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#telbdbcife .gt_footnotes {
+&#10;#jdmfvdxncw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -455,7 +482,7 @@ missing_summary_all %>%
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#telbdbcife .gt_footnote {
+&#10;#jdmfvdxncw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -463,7 +490,7 @@ missing_summary_all %>%
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#telbdbcife .gt_sourcenotes {
+&#10;#jdmfvdxncw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -476,57 +503,57 @@ missing_summary_all %>%
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#telbdbcife .gt_sourcenote {
+&#10;#jdmfvdxncw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#telbdbcife .gt_left {
+&#10;#jdmfvdxncw .gt_left {
   text-align: left;
 }
-&#10;#telbdbcife .gt_center {
+&#10;#jdmfvdxncw .gt_center {
   text-align: center;
 }
-&#10;#telbdbcife .gt_right {
+&#10;#jdmfvdxncw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#telbdbcife .gt_font_normal {
+&#10;#jdmfvdxncw .gt_font_normal {
   font-weight: normal;
 }
-&#10;#telbdbcife .gt_font_bold {
+&#10;#jdmfvdxncw .gt_font_bold {
   font-weight: bold;
 }
-&#10;#telbdbcife .gt_font_italic {
+&#10;#jdmfvdxncw .gt_font_italic {
   font-style: italic;
 }
-&#10;#telbdbcife .gt_super {
+&#10;#jdmfvdxncw .gt_super {
   font-size: 65%;
 }
-&#10;#telbdbcife .gt_footnote_marks {
+&#10;#jdmfvdxncw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#telbdbcife .gt_asterisk {
+&#10;#jdmfvdxncw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#telbdbcife .gt_indent_1 {
+&#10;#jdmfvdxncw .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#telbdbcife .gt_indent_2 {
+&#10;#jdmfvdxncw .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#telbdbcife .gt_indent_3 {
+&#10;#jdmfvdxncw .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#telbdbcife .gt_indent_4 {
+&#10;#jdmfvdxncw .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#telbdbcife .gt_indent_5 {
+&#10;#jdmfvdxncw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -680,35 +707,3 @@ missing_summary_all %>%
   &#10;  
 </table>
 </div>
-
-## Comparison of Alternative Methods for Estimating CES Scores
-
-To test the sensitivity of the estimated CES scores to the method used
-to compute the scores, we also estimated the overall CES score for each
-HOLC neighborhood using an alternative method - nearest centroid
-matching - and compared the results to those obtained from our original
-area weighted average method. This nearest centroid approach finds the
-CES census tract (excluding tracts without CES scores) whose centriod is
-closest to the centroid of each HOLC neighborhood, and assigns the CES
-score of the matched census tract to that HOLC neighborhood. If the
-results from the two methods are substantially the same, we can infer
-that the estimated CES scores are not highly sensitive to different
-calculation methods, and therefore have greater confidence in our
-estimated CES scores.
-
-fig-score-method-comparison shows how the CES scores estimated for each
-HOLC neighborhood using the two methods compare across all HOLC grades.
-
-<img
-src="summary_report_files/figure-commonmark/fig-score-method-comparison-1.png"
-id="fig-score-method-comparison"
-alt="Figure 7: Comparison of CES scores computed with the area weighted average and nearest centroid methods." />
-
-fig-score-method-comparison-facet shows how the CES scores estimated for
-each HOLC neighborhood using the two methods compare for each of the
-four HOLC grades individually.
-
-<img
-src="summary_report_files/figure-commonmark/fig-score-method-comparison-facet-1.png"
-id="fig-score-method-comparison-facet"
-alt="Figure 8: Comparison of CES scores computed with the area weighted average and nearest centroid methods, by HOLC grade." />
