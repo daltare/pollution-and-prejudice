@@ -15,6 +15,7 @@ library(targets)
 library(tidyverse)
 library(sf)
 library(gt)
+library(knitr)
 ```
 
 ## Background
@@ -55,9 +56,9 @@ Estimate CES scores and present-day racial / ethnic makeup for each neighborhood
 #| label: fig-scores-raw
 #| fig-cap: "Estimated CES scores for each neighborhood in the HOLC maps in California."
 #| warning: false
-#| fig.height: 4.5
-#| fig.width: 10
-#| dpi: 300
+#| fig-height: 4.5
+#| fig-width: 10
+#| fig-dpi: 300
 #| echo: false
 
 targets::tar_read(plot_scores_points_raw,
@@ -73,9 +74,9 @@ targets::tar_read(plot_scores_points_raw,
 #| label: fig-scores-avg-by-grade
 #| fig-cap: "Average estimated CES scores for each HOLC grade within each city."
 #| warning: false
-#| fig.height: 4.5
-#| fig.width: 10
-#| dpi: 300
+#| fig-height: 4.5
+#| fig-width: 10
+#| fig-dpi: 300
 #| echo: false
 
 targets::tar_read(plot_scores_points_average_by_grade,
@@ -95,9 +96,9 @@ targets::tar_read(plot_scores_points_average_by_grade,
 #| label: fig-scores-departure
 #| fig-cap: "Estimated CES departure scores."
 #| warning: false
-#| fig.height: 4.5
-#| fig.width: 10
-#| dpi: 300
+#| fig-height: 4.5
+#| fig-width: 10
+#| fig-dpi: 300
 #| echo: false
 
 targets::tar_read(plot_scores_points_departure,
@@ -114,9 +115,9 @@ targets::tar_read(plot_scores_points_departure,
 #| label: fig-boxplot
 #| fig-cap: "Boxplot of estimated CES departure scores by HOLC grade."
 #| warning: false
-#| fig.height: 6
-#| fig.width: 10
-#| dpi: 300
+#| fig-height: 6
+#| fig-width: 10
+#| fig-dpi: 300
 #| echo: false
 
 targets::tar_read(plot_scores_box_departure_legend,
@@ -133,9 +134,9 @@ targets::tar_read(plot_scores_box_departure_legend,
 #| label: fig-demographics-race
 #| fig-cap: "Estimated present-day distribution of racial/ethnic groups across HOLC grades."
 #| warning: false
-#| fig.height: 3
-#| fig.width: 10
-#| dpi: 300
+#| fig-height: 3
+#| fig-width: 10
+#| fig-dpi: 300
 #| echo: false
 
 targets::tar_read(plot_race_bars_by_group,
@@ -154,9 +155,13 @@ fig-score-method-comparison shows how the CES scores estimated for each HOLC nei
 #| label: fig-score-method-comparison
 #| fig-cap: "Comparison of CES scores computed with the area weighted average and nearest centroid methods."
 #| warning: false
-#| fig.height: 6
-#| fig.width: 6
-#| dpi: 300
+##| fig-height: 6
+##| fig-width: 6
+##| out-width: 5in
+##| out-height: 5in
+#| fig-height: 6
+#| fig-width: 10
+#| fig-dpi: 300
 #| echo: false
 
 targets::tar_read(plot_scores_method_comparison_scatter,
@@ -168,9 +173,9 @@ fig-score-method-comparison-facet shows how the CES scores estimated for each HO
 #| label: fig-score-method-comparison-facet
 #| fig-cap: "Comparison of CES scores computed with the area weighted average and nearest centroid methods, by HOLC grade."
 #| warning: false
-#| fig.height: 6
-#| fig.width: 6
-#| dpi: 300
+#| fig-height: 6
+#| fig-width: 10
+#| fig-dpi: 300
 #| echo: false
 
 targets::tar_read(plot_scores_method_comparison_scatter_facet,
@@ -238,6 +243,10 @@ missing_summary_all <- ces_scores_missing_check %>%
 #| tbl-cap: "Summary of missing HOLC neighborhoods which are not assigned CES scores."
 #| echo: false
 
+# missing_summary_all %>% 
+#     gt()
+
 missing_summary_all %>% 
-    gt()
+    kable()
+
 ```

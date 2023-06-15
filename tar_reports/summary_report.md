@@ -130,6 +130,20 @@ estimated CES scores.
 fig-score-method-comparison shows how the CES scores estimated for each
 HOLC neighborhood using the two methods compare across all HOLC grades.
 
+``` r
+##| fig-height: 6
+##| fig-width: 6
+##| out-width: 5in
+##| out-height: 5in
+#| fig-height: 6
+#| fig-width: 10
+#| fig-dpi: 300
+#| echo: false
+
+targets::tar_read(plot_scores_method_comparison_scatter,
+                  store = here::here(tar_config_get('store'))) # allows for manual rendering
+```
+
 <img
 src="summary_report_files/figure-commonmark/fig-score-method-comparison-1.png"
 id="fig-score-method-comparison"
@@ -165,545 +179,40 @@ threshold, there are 3 HOLC neighborhoods which fall below the
 threshold, and are not assigned a CES 4.0 score (i.e., they are given an
 `NA` value).
 
-**?@tbl-missing-scores** provides a summary of the number of HOLC
+[Table 1](#tbl-missing-scores) provides a summary of the number of HOLC
 neighborhoods with missing CES scores by CES measure and HOLC grade.
 
-<div id="jdmfvdxncw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jdmfvdxncw table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-&#10;#jdmfvdxncw thead, #jdmfvdxncw tbody, #jdmfvdxncw tfoot, #jdmfvdxncw tr, #jdmfvdxncw td, #jdmfvdxncw th {
-  border-style: none;
-}
-&#10;#jdmfvdxncw p {
-  margin: 0;
-  padding: 0;
-}
-&#10;#jdmfvdxncw .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-&#10;#jdmfvdxncw .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-&#10;#jdmfvdxncw .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-&#10;#jdmfvdxncw .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-&#10;#jdmfvdxncw .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-&#10;#jdmfvdxncw .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-&#10;#jdmfvdxncw .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-&#10;#jdmfvdxncw .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-&#10;#jdmfvdxncw .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-&#10;#jdmfvdxncw .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-&#10;#jdmfvdxncw .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-&#10;#jdmfvdxncw .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-&#10;#jdmfvdxncw .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-&#10;#jdmfvdxncw .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-&#10;#jdmfvdxncw .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-&#10;#jdmfvdxncw .gt_from_md > :first-child {
-  margin-top: 0;
-}
-&#10;#jdmfvdxncw .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-&#10;#jdmfvdxncw .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-&#10;#jdmfvdxncw .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-&#10;#jdmfvdxncw .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-&#10;#jdmfvdxncw .gt_row_group_first td {
-  border-top-width: 2px;
-}
-&#10;#jdmfvdxncw .gt_row_group_first th {
-  border-top-width: 2px;
-}
-&#10;#jdmfvdxncw .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-&#10;#jdmfvdxncw .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-&#10;#jdmfvdxncw .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-&#10;#jdmfvdxncw .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-&#10;#jdmfvdxncw .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-&#10;#jdmfvdxncw .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-&#10;#jdmfvdxncw .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-&#10;#jdmfvdxncw .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-&#10;#jdmfvdxncw .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-&#10;#jdmfvdxncw .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-&#10;#jdmfvdxncw .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-&#10;#jdmfvdxncw .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-&#10;#jdmfvdxncw .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-&#10;#jdmfvdxncw .gt_left {
-  text-align: left;
-}
-&#10;#jdmfvdxncw .gt_center {
-  text-align: center;
-}
-&#10;#jdmfvdxncw .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-&#10;#jdmfvdxncw .gt_font_normal {
-  font-weight: normal;
-}
-&#10;#jdmfvdxncw .gt_font_bold {
-  font-weight: bold;
-}
-&#10;#jdmfvdxncw .gt_font_italic {
-  font-style: italic;
-}
-&#10;#jdmfvdxncw .gt_super {
-  font-size: 65%;
-}
-&#10;#jdmfvdxncw .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-&#10;#jdmfvdxncw .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-&#10;#jdmfvdxncw .gt_indent_1 {
-  text-indent: 5px;
-}
-&#10;#jdmfvdxncw .gt_indent_2 {
-  text-indent: 10px;
-}
-&#10;#jdmfvdxncw .gt_indent_3 {
-  text-indent: 15px;
-}
-&#10;#jdmfvdxncw .gt_indent_4 {
-  text-indent: 20px;
-}
-&#10;#jdmfvdxncw .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    &#10;    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="holc_grade">holc_grade</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="n_missing">n_missing</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="n_total">n_total</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="pct_missing">pct_missing</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="calenviroscreen_4_0_score">calenviroscreen_4_0_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="calenviroscreen_4_0_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="calenviroscreen_4_0_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="calenviroscreen_4_0_score  n_total" class="gt_row gt_right">273</td>
-<td headers="calenviroscreen_4_0_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="calenviroscreen_4_0_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="calenviroscreen_4_0_score  n_missing" class="gt_row gt_right">2</td>
-<td headers="calenviroscreen_4_0_score  n_total" class="gt_row gt_right">331</td>
-<td headers="calenviroscreen_4_0_score  pct_missing" class="gt_row gt_right">0.60%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="drinking_water_score">drinking_water_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="drinking_water_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="drinking_water_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="drinking_water_score  n_total" class="gt_row gt_right">273</td>
-<td headers="drinking_water_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="education_score">education_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="education_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="education_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="education_score  n_total" class="gt_row gt_right">273</td>
-<td headers="education_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="education_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="education_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="education_score  n_total" class="gt_row gt_right">331</td>
-<td headers="education_score  pct_missing" class="gt_row gt_right">0.30%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="housing_burden_score">housing_burden_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="housing_burden_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="housing_burden_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="housing_burden_score  n_total" class="gt_row gt_right">273</td>
-<td headers="housing_burden_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="housing_burden_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="housing_burden_score  n_missing" class="gt_row gt_right">2</td>
-<td headers="housing_burden_score  n_total" class="gt_row gt_right">331</td>
-<td headers="housing_burden_score  pct_missing" class="gt_row gt_right">0.60%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="lead_score">lead_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="lead_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="lead_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="lead_score  n_total" class="gt_row gt_right">273</td>
-<td headers="lead_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="lead_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="lead_score  n_missing" class="gt_row gt_right">2</td>
-<td headers="lead_score  n_total" class="gt_row gt_right">331</td>
-<td headers="lead_score  pct_missing" class="gt_row gt_right">0.60%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="linguistic_isolation_score">linguistic_isolation_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="linguistic_isolation_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="linguistic_isolation_score  n_missing" class="gt_row gt_right">5</td>
-<td headers="linguistic_isolation_score  n_total" class="gt_row gt_right">273</td>
-<td headers="linguistic_isolation_score  pct_missing" class="gt_row gt_right">1.83%</td></tr>
-    <tr><td headers="linguistic_isolation_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="linguistic_isolation_score  n_missing" class="gt_row gt_right">14</td>
-<td headers="linguistic_isolation_score  n_total" class="gt_row gt_right">331</td>
-<td headers="linguistic_isolation_score  pct_missing" class="gt_row gt_right">4.23%</td></tr>
-    <tr><td headers="linguistic_isolation_score  holc_grade" class="gt_row gt_left">D</td>
-<td headers="linguistic_isolation_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="linguistic_isolation_score  n_total" class="gt_row gt_right">155</td>
-<td headers="linguistic_isolation_score  pct_missing" class="gt_row gt_right">0.65%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="low_birth_weight_score">low_birth_weight_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="low_birth_weight_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="low_birth_weight_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="low_birth_weight_score  n_total" class="gt_row gt_right">273</td>
-<td headers="low_birth_weight_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="low_birth_weight_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="low_birth_weight_score  n_missing" class="gt_row gt_right">3</td>
-<td headers="low_birth_weight_score  n_total" class="gt_row gt_right">331</td>
-<td headers="low_birth_weight_score  pct_missing" class="gt_row gt_right">0.91%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="population_characteristics_group_score">population_characteristics_group_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="population_characteristics_group_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="population_characteristics_group_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="population_characteristics_group_score  n_total" class="gt_row gt_right">273</td>
-<td headers="population_characteristics_group_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="population_characteristics_group_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="population_characteristics_group_score  n_missing" class="gt_row gt_right">2</td>
-<td headers="population_characteristics_group_score  n_total" class="gt_row gt_right">331</td>
-<td headers="population_characteristics_group_score  pct_missing" class="gt_row gt_right">0.60%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="population_characteristics_group_score_scaled">population_characteristics_group_score_scaled</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="population_characteristics_group_score_scaled  holc_grade" class="gt_row gt_left">B</td>
-<td headers="population_characteristics_group_score_scaled  n_missing" class="gt_row gt_right">1</td>
-<td headers="population_characteristics_group_score_scaled  n_total" class="gt_row gt_right">273</td>
-<td headers="population_characteristics_group_score_scaled  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="population_characteristics_group_score_scaled  holc_grade" class="gt_row gt_left">C</td>
-<td headers="population_characteristics_group_score_scaled  n_missing" class="gt_row gt_right">2</td>
-<td headers="population_characteristics_group_score_scaled  n_total" class="gt_row gt_right">331</td>
-<td headers="population_characteristics_group_score_scaled  pct_missing" class="gt_row gt_right">0.60%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="poverty_score">poverty_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="poverty_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="poverty_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="poverty_score  n_total" class="gt_row gt_right">273</td>
-<td headers="poverty_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="poverty_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="poverty_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="poverty_score  n_total" class="gt_row gt_right">331</td>
-<td headers="poverty_score  pct_missing" class="gt_row gt_right">0.30%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="traffic_score">traffic_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="traffic_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="traffic_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="traffic_score  n_total" class="gt_row gt_right">273</td>
-<td headers="traffic_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="unemployment_score">unemployment_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="unemployment_score  holc_grade" class="gt_row gt_left">A</td>
-<td headers="unemployment_score  n_missing" class="gt_row gt_right">3</td>
-<td headers="unemployment_score  n_total" class="gt_row gt_right">109</td>
-<td headers="unemployment_score  pct_missing" class="gt_row gt_right">2.75%</td></tr>
-    <tr><td headers="unemployment_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="unemployment_score  n_missing" class="gt_row gt_right">8</td>
-<td headers="unemployment_score  n_total" class="gt_row gt_right">273</td>
-<td headers="unemployment_score  pct_missing" class="gt_row gt_right">2.93%</td></tr>
-    <tr><td headers="unemployment_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="unemployment_score  n_missing" class="gt_row gt_right">7</td>
-<td headers="unemployment_score  n_total" class="gt_row gt_right">331</td>
-<td headers="unemployment_score  pct_missing" class="gt_row gt_right">2.11%</td></tr>
-    <tr><td headers="unemployment_score  holc_grade" class="gt_row gt_left">D</td>
-<td headers="unemployment_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="unemployment_score  n_total" class="gt_row gt_right">155</td>
-<td headers="unemployment_score  pct_missing" class="gt_row gt_right">0.65%</td></tr>
-  </tbody>
-  &#10;  
-</table>
+<div id="tbl-missing-scores">
+
+| ces_measure                                   | holc_grade | n_missing | n_total | pct_missing |
+|:----------------------------------------------|:-----------|----------:|--------:|:------------|
+| calenviroscreen_4_0_score                     | B          |         1 |     273 | 0.37%       |
+| calenviroscreen_4_0_score                     | C          |         2 |     331 | 0.60%       |
+| drinking_water_score                          | B          |         1 |     273 | 0.37%       |
+| education_score                               | B          |         1 |     273 | 0.37%       |
+| education_score                               | C          |         1 |     331 | 0.30%       |
+| housing_burden_score                          | B          |         1 |     273 | 0.37%       |
+| housing_burden_score                          | C          |         2 |     331 | 0.60%       |
+| lead_score                                    | B          |         1 |     273 | 0.37%       |
+| lead_score                                    | C          |         2 |     331 | 0.60%       |
+| linguistic_isolation_score                    | B          |         5 |     273 | 1.83%       |
+| linguistic_isolation_score                    | C          |        14 |     331 | 4.23%       |
+| linguistic_isolation_score                    | D          |         1 |     155 | 0.65%       |
+| low_birth_weight_score                        | B          |         1 |     273 | 0.37%       |
+| low_birth_weight_score                        | C          |         3 |     331 | 0.91%       |
+| population_characteristics_group_score        | B          |         1 |     273 | 0.37%       |
+| population_characteristics_group_score        | C          |         2 |     331 | 0.60%       |
+| population_characteristics_group_score_scaled | B          |         1 |     273 | 0.37%       |
+| population_characteristics_group_score_scaled | C          |         2 |     331 | 0.60%       |
+| poverty_score                                 | B          |         1 |     273 | 0.37%       |
+| poverty_score                                 | C          |         1 |     331 | 0.30%       |
+| traffic_score                                 | B          |         1 |     273 | 0.37%       |
+| unemployment_score                            | A          |         3 |     109 | 2.75%       |
+| unemployment_score                            | B          |         8 |     273 | 2.93%       |
+| unemployment_score                            | C          |         7 |     331 | 2.11%       |
+| unemployment_score                            | D          |         1 |     155 | 0.65%       |
+
+Table 1: Summary of missing HOLC neighborhoods which are not assigned
+CES scores.
+
 </div>

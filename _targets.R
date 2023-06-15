@@ -41,7 +41,8 @@ tar_option_set(
                  'rosm',
                  'sp',
                  'quarto',
-                 'gt'
+                 'gt',
+                 'knitr'
     ), 
     # default storage format
     format = "rds",

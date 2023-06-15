@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -102,11 +136,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="raw-scores" class="level3">
 <h3 class="anchored" data-anchor-id="raw-scores">Raw Scores</h3>
 <p><a href="#fig-scores-raw">Figure&nbsp;2</a> shows the estimated CES score for each neighborhood in the 1930s HOLC maps.</p>
-<div class="cell">
+<div class="cell" data-fig.dpi="300">
 <div class="cell-output-display">
 <div id="fig-scores-raw" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-scores-raw-1.png" class="img-fluid figure-img" width="3000"></p>
+<p><img src="summary_report_files/figure-html/fig-scores-raw-1.png" class="img-fluid figure-img" width="960"></p>
 <figcaption class="figure-caption">Figure&nbsp;2: Estimated CES scores for each neighborhood in the HOLC maps in California.</figcaption>
 </figure>
 </div>
@@ -116,11 +150,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="average-scores-by-holc-grade" class="level3">
 <h3 class="anchored" data-anchor-id="average-scores-by-holc-grade">Average Scores by HOLC Grade</h3>
 <p><a href="#fig-scores-avg-by-grade">Figure&nbsp;3</a> shows the average of the estimated CES scores for each HOLC grade (A through D) within each city.</p>
-<div class="cell">
+<div class="cell" data-fig.dpi="300">
 <div class="cell-output-display">
 <div id="fig-scores-avg-by-grade" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-scores-avg-by-grade-1.png" class="img-fluid figure-img" width="3000"></p>
+<p><img src="summary_report_files/figure-html/fig-scores-avg-by-grade-1.png" class="img-fluid figure-img" width="960"></p>
 <figcaption class="figure-caption">Figure&nbsp;3: Average estimated CES scores for each HOLC grade within each city.</figcaption>
 </figure>
 </div>
@@ -135,11 +169,11 @@ ul.task-list li input[type="checkbox"] {
 <li>Essentially, this centers the average estimated CES score for all cities at zero, and makes comparisons across cities possible (otherwise, regional differences in the factors that CES measures would overwhelm any differences between HOLC grades)</li>
 <li>A positive departure score means the CES score for that HOLC neighborhood is above the average for its city, whereas a negative score means the CES score is below the average for its city.</li>
 </ul>
-<div class="cell">
+<div class="cell" data-fig.dpi="300">
 <div class="cell-output-display">
 <div id="fig-scores-departure" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-scores-departure-1.png" class="img-fluid figure-img" width="3000"></p>
+<p><img src="summary_report_files/figure-html/fig-scores-departure-1.png" class="img-fluid figure-img" width="960"></p>
 <figcaption class="figure-caption">Figure&nbsp;4: Estimated CES departure scores.</figcaption>
 </figure>
 </div>
@@ -149,11 +183,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="adjusted-departure-scores---boxplot" class="level3">
 <h3 class="anchored" data-anchor-id="adjusted-departure-scores---boxplot">Adjusted (Departure) Scores - Boxplot</h3>
 <p><a href="#fig-boxplot">Figure&nbsp;5</a> shows a boxplot of the departure scores, which helps to illustrate the scale of the differences in estimated CES scores between the HOLC grades.</p>
-<div class="cell">
+<div class="cell" data-fig.dpi="300">
 <div class="cell-output-display">
 <div id="fig-boxplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-boxplot-1.png" class="img-fluid figure-img" width="3000"></p>
+<p><img src="summary_report_files/figure-html/fig-boxplot-1.png" class="img-fluid figure-img" width="960"></p>
 <figcaption class="figure-caption">Figure&nbsp;5: Boxplot of estimated CES departure scores by HOLC grade.</figcaption>
 </figure>
 </div>
@@ -164,11 +198,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="results---demographics" class="level2">
 <h2 class="anchored" data-anchor-id="results---demographics">Results - Demographics</h2>
 <p><a href="#fig-demographics-race">Figure&nbsp;6</a> shows the estimated present-day distribution of racial/ethnic groups across HOLC grades (for the population living within neighborhoods in California cities that were included in the 1930s HOLC maps).</p>
-<div class="cell">
+<div class="cell" data-fig.dpi="300">
 <div class="cell-output-display">
 <div id="fig-demographics-race" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-demographics-race-1.png" class="img-fluid figure-img" width="3000"></p>
+<p><img src="summary_report_files/figure-html/fig-demographics-race-1.png" class="img-fluid figure-img" width="960"></p>
 <figcaption class="figure-caption">Figure&nbsp;6: Estimated present-day distribution of racial/ethnic groups across HOLC grades.</figcaption>
 </figure>
 </div>
@@ -180,21 +214,32 @@ ul.task-list li input[type="checkbox"] {
 <p>To test the sensitivity of the estimated CES scores to the method used to compute the scores, we also estimated the overall CES score for each HOLC neighborhood using an alternative method - nearest centroid matching - and compared the results to those obtained from our original area weighted average method. This nearest centroid approach finds the CES census tract (excluding tracts without CES scores) whose centriod is closest to the centroid of each HOLC neighborhood, and assigns the CES score of the matched census tract to that HOLC neighborhood. If the results from the two methods are substantially the same, we can infer that the estimated CES scores are not highly sensitive to different calculation methods, and therefore have greater confidence in our estimated CES scores.</p>
 <p>fig-score-method-comparison shows how the CES scores estimated for each HOLC neighborhood using the two methods compare across all HOLC grades.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">##| fig-height: 6</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">##| fig-width: 6</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">##| out-width: 5in</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">##| out-height: 5in</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-dpi: 300</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>targets<span class="sc">::</span><span class="fu">tar_read</span>(plot_scores_method_comparison_scatter,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">store =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="fu">tar_config_get</span>(<span class="st">'store'</span>))) <span class="co"># allows for manual rendering</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-score-method-comparison" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-score-method-comparison-1.png" class="img-fluid figure-img" width="1800"></p>
+<p><img src="summary_report_files/figure-html/fig-score-method-comparison-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;7: Comparison of CES scores computed with the area weighted average and nearest centroid methods.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>fig-score-method-comparison-facet shows how the CES scores estimated for each HOLC neighborhood using the two methods compare for each of the four HOLC grades individually.</p>
-<div class="cell">
+<div class="cell" data-fig.dpi="300">
 <div class="cell-output-display">
 <div id="fig-score-method-comparison-facet" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="summary_report_files/figure-html/fig-score-method-comparison-facet-1.png" class="img-fluid figure-img" width="1800"></p>
+<p><img src="summary_report_files/figure-html/fig-score-method-comparison-facet-1.png" class="img-fluid figure-img" width="960"></p>
 <figcaption class="figure-caption">Figure&nbsp;8: Comparison of CES scores computed with the area weighted average and nearest centroid methods, by HOLC grade.</figcaption>
 </figure>
 </div>
@@ -210,600 +255,202 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-missing-scores" class="anchored">
-
-<div id="zgffffnhmy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zgffffnhmy table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#zgffffnhmy thead, #zgffffnhmy tbody, #zgffffnhmy tfoot, #zgffffnhmy tr, #zgffffnhmy td, #zgffffnhmy th {
-  border-style: none;
-}
-
-#zgffffnhmy p {
-  margin: 0;
-  padding: 0;
-}
-
-#zgffffnhmy .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#zgffffnhmy .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#zgffffnhmy .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#zgffffnhmy .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#zgffffnhmy .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#zgffffnhmy .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#zgffffnhmy .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#zgffffnhmy .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#zgffffnhmy .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#zgffffnhmy .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#zgffffnhmy .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#zgffffnhmy .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#zgffffnhmy .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#zgffffnhmy .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#zgffffnhmy .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#zgffffnhmy .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#zgffffnhmy .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#zgffffnhmy .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#zgffffnhmy .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zgffffnhmy .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#zgffffnhmy .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#zgffffnhmy .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#zgffffnhmy .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zgffffnhmy .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#zgffffnhmy .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#zgffffnhmy .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#zgffffnhmy .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zgffffnhmy .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#zgffffnhmy .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#zgffffnhmy .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#zgffffnhmy .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#zgffffnhmy .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#zgffffnhmy .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zgffffnhmy .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#zgffffnhmy .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zgffffnhmy .gt_left {
-  text-align: left;
-}
-
-#zgffffnhmy .gt_center {
-  text-align: center;
-}
-
-#zgffffnhmy .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#zgffffnhmy .gt_font_normal {
-  font-weight: normal;
-}
-
-#zgffffnhmy .gt_font_bold {
-  font-weight: bold;
-}
-
-#zgffffnhmy .gt_font_italic {
-  font-style: italic;
-}
-
-#zgffffnhmy .gt_super {
-  font-size: 65%;
-}
-
-#zgffffnhmy .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#zgffffnhmy .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#zgffffnhmy .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#zgffffnhmy .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#zgffffnhmy .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#zgffffnhmy .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#zgffffnhmy .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;1:  <p>Summary of missing HOLC neighborhoods which are not assigned CES
-scores.</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="holc_grade">holc_grade</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="n_missing">n_missing</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="n_total">n_total</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="pct_missing">pct_missing</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="calenviroscreen_4_0_score">calenviroscreen_4_0_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="calenviroscreen_4_0_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="calenviroscreen_4_0_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="calenviroscreen_4_0_score  n_total" class="gt_row gt_right">273</td>
-<td headers="calenviroscreen_4_0_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="calenviroscreen_4_0_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="calenviroscreen_4_0_score  n_missing" class="gt_row gt_right">2</td>
-<td headers="calenviroscreen_4_0_score  n_total" class="gt_row gt_right">331</td>
-<td headers="calenviroscreen_4_0_score  pct_missing" class="gt_row gt_right">0.60%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="drinking_water_score">drinking_water_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="drinking_water_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="drinking_water_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="drinking_water_score  n_total" class="gt_row gt_right">273</td>
-<td headers="drinking_water_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="education_score">education_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="education_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="education_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="education_score  n_total" class="gt_row gt_right">273</td>
-<td headers="education_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="education_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="education_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="education_score  n_total" class="gt_row gt_right">331</td>
-<td headers="education_score  pct_missing" class="gt_row gt_right">0.30%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="housing_burden_score">housing_burden_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="housing_burden_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="housing_burden_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="housing_burden_score  n_total" class="gt_row gt_right">273</td>
-<td headers="housing_burden_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="housing_burden_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="housing_burden_score  n_missing" class="gt_row gt_right">2</td>
-<td headers="housing_burden_score  n_total" class="gt_row gt_right">331</td>
-<td headers="housing_burden_score  pct_missing" class="gt_row gt_right">0.60%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="lead_score">lead_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="lead_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="lead_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="lead_score  n_total" class="gt_row gt_right">273</td>
-<td headers="lead_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="lead_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="lead_score  n_missing" class="gt_row gt_right">2</td>
-<td headers="lead_score  n_total" class="gt_row gt_right">331</td>
-<td headers="lead_score  pct_missing" class="gt_row gt_right">0.60%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="linguistic_isolation_score">linguistic_isolation_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="linguistic_isolation_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="linguistic_isolation_score  n_missing" class="gt_row gt_right">5</td>
-<td headers="linguistic_isolation_score  n_total" class="gt_row gt_right">273</td>
-<td headers="linguistic_isolation_score  pct_missing" class="gt_row gt_right">1.83%</td></tr>
-    <tr><td headers="linguistic_isolation_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="linguistic_isolation_score  n_missing" class="gt_row gt_right">14</td>
-<td headers="linguistic_isolation_score  n_total" class="gt_row gt_right">331</td>
-<td headers="linguistic_isolation_score  pct_missing" class="gt_row gt_right">4.23%</td></tr>
-    <tr><td headers="linguistic_isolation_score  holc_grade" class="gt_row gt_left">D</td>
-<td headers="linguistic_isolation_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="linguistic_isolation_score  n_total" class="gt_row gt_right">155</td>
-<td headers="linguistic_isolation_score  pct_missing" class="gt_row gt_right">0.65%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="low_birth_weight_score">low_birth_weight_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="low_birth_weight_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="low_birth_weight_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="low_birth_weight_score  n_total" class="gt_row gt_right">273</td>
-<td headers="low_birth_weight_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="low_birth_weight_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="low_birth_weight_score  n_missing" class="gt_row gt_right">3</td>
-<td headers="low_birth_weight_score  n_total" class="gt_row gt_right">331</td>
-<td headers="low_birth_weight_score  pct_missing" class="gt_row gt_right">0.91%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="population_characteristics_group_score">population_characteristics_group_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="population_characteristics_group_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="population_characteristics_group_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="population_characteristics_group_score  n_total" class="gt_row gt_right">273</td>
-<td headers="population_characteristics_group_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="population_characteristics_group_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="population_characteristics_group_score  n_missing" class="gt_row gt_right">2</td>
-<td headers="population_characteristics_group_score  n_total" class="gt_row gt_right">331</td>
-<td headers="population_characteristics_group_score  pct_missing" class="gt_row gt_right">0.60%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="population_characteristics_group_score_scaled">population_characteristics_group_score_scaled</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="population_characteristics_group_score_scaled  holc_grade" class="gt_row gt_left">B</td>
-<td headers="population_characteristics_group_score_scaled  n_missing" class="gt_row gt_right">1</td>
-<td headers="population_characteristics_group_score_scaled  n_total" class="gt_row gt_right">273</td>
-<td headers="population_characteristics_group_score_scaled  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="population_characteristics_group_score_scaled  holc_grade" class="gt_row gt_left">C</td>
-<td headers="population_characteristics_group_score_scaled  n_missing" class="gt_row gt_right">2</td>
-<td headers="population_characteristics_group_score_scaled  n_total" class="gt_row gt_right">331</td>
-<td headers="population_characteristics_group_score_scaled  pct_missing" class="gt_row gt_right">0.60%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="poverty_score">poverty_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="poverty_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="poverty_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="poverty_score  n_total" class="gt_row gt_right">273</td>
-<td headers="poverty_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr><td headers="poverty_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="poverty_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="poverty_score  n_total" class="gt_row gt_right">331</td>
-<td headers="poverty_score  pct_missing" class="gt_row gt_right">0.30%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="traffic_score">traffic_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="traffic_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="traffic_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="traffic_score  n_total" class="gt_row gt_right">273</td>
-<td headers="traffic_score  pct_missing" class="gt_row gt_right">0.37%</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="4" class="gt_group_heading" scope="colgroup" id="unemployment_score">unemployment_score</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="unemployment_score  holc_grade" class="gt_row gt_left">A</td>
-<td headers="unemployment_score  n_missing" class="gt_row gt_right">3</td>
-<td headers="unemployment_score  n_total" class="gt_row gt_right">109</td>
-<td headers="unemployment_score  pct_missing" class="gt_row gt_right">2.75%</td></tr>
-    <tr><td headers="unemployment_score  holc_grade" class="gt_row gt_left">B</td>
-<td headers="unemployment_score  n_missing" class="gt_row gt_right">8</td>
-<td headers="unemployment_score  n_total" class="gt_row gt_right">273</td>
-<td headers="unemployment_score  pct_missing" class="gt_row gt_right">2.93%</td></tr>
-    <tr><td headers="unemployment_score  holc_grade" class="gt_row gt_left">C</td>
-<td headers="unemployment_score  n_missing" class="gt_row gt_right">7</td>
-<td headers="unemployment_score  n_total" class="gt_row gt_right">331</td>
-<td headers="unemployment_score  pct_missing" class="gt_row gt_right">2.11%</td></tr>
-    <tr><td headers="unemployment_score  holc_grade" class="gt_row gt_left">D</td>
-<td headers="unemployment_score  n_missing" class="gt_row gt_right">1</td>
-<td headers="unemployment_score  n_total" class="gt_row gt_right">155</td>
-<td headers="unemployment_score  pct_missing" class="gt_row gt_right">0.65%</td></tr>
-  </tbody>
-  
-  
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;1: Summary of missing HOLC neighborhoods which are not assigned CES scores.</caption>
+<colgroup>
+<col style="width: 52%">
+<col style="width: 12%">
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">ces_measure</th>
+<th style="text-align: left;">holc_grade</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">n_total</th>
+<th style="text-align: left;">pct_missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">calenviroscreen_4_0_score</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">0.37%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">calenviroscreen_4_0_score</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: left;">0.60%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">drinking_water_score</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">0.37%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">education_score</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">0.37%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">education_score</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: left;">0.30%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">housing_burden_score</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">0.37%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">housing_burden_score</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: left;">0.60%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lead_score</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">0.37%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">lead_score</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: left;">0.60%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">linguistic_isolation_score</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">1.83%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">linguistic_isolation_score</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: left;">4.23%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">linguistic_isolation_score</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">155</td>
+<td style="text-align: left;">0.65%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">low_birth_weight_score</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">0.37%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">low_birth_weight_score</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: left;">0.91%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">population_characteristics_group_score</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">0.37%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">population_characteristics_group_score</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: left;">0.60%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">population_characteristics_group_score_scaled</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">0.37%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">population_characteristics_group_score_scaled</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: left;">0.60%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">poverty_score</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">0.37%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">poverty_score</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: left;">0.30%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">traffic_score</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">0.37%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">unemployment_score</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: left;">2.75%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">unemployment_score</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: left;">2.93%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">unemployment_score</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: left;">2.11%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">unemployment_score</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">155</td>
+<td style="text-align: left;">0.65%</td>
+</tr>
+</tbody>
 </table>
-</div>
 </div>
 </div>
 </div>
