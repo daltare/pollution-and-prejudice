@@ -1,8 +1,24 @@
-# # Compute weighted average CalEnviroScreen (CES) scores for each HOLC polygon 
-# # (for all CES measures)
+# # Compute weighted average CalEnviroScreen (CES) scores for each HOLC  
+# # neighborhood (for all CES measures). This approach finds the CES census 
+# # tracts that overlap with each HOLC neighborhood, then computes an area 
+# # weighted average based on the portion of the HOLC neighborhood that any  
+# # overlapping census tracts cover. 
+# # 
+# # Because some census tracts are not assigned a CES score (i.e., missing / 
+# # null) (there are 103 tracts with missing overall CES scores, and varying numbers 
+# # of tracts with missing scores for individual indicators - this includes 23 
+# # tracts with zero population), a minimum coverage threshold (as a percent of 
+# # each HOLC neighborhood area covered by CES tracts with scores) is applied. 
+# # This threshold is assigned in the 'ces_coverage_threshold' variable below.
+# # A HOLC neighborhood is only assigned a CES score if the area covered by CES 
+# # tracts with scores exceeds the minimum coverage threshold, otherwise the 
+# # HOLC neighborhood is assigned a NA (i.e., missing) value.
 # #
-# # for CES 4.0 info, see: https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40
-# # for HOLC polygons (redline maps), see: https://dsl.richmond.edu/panorama/redlining/#text=downloads
+# # For CES 4.0 info, see: 
+# # https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40
+# # 
+# # For HOLC neighborhoods (redline maps), see: 
+# # https://dsl.richmond.edu/panorama/redlining/#text=downloads
 # 
 # # packages ----
 # library(tidyverse)

@@ -66,7 +66,7 @@ For an overview of the analytical process and results, see the
 The primary results are available in the
 `tar_data_results/redline_CES_scores.gpkg` file, which can be downloaded
 using [this
-link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_results/redline_CES_scores.gpkg).
+link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_results/HOLC_CES_scores_demographics.gpkg).
 This file includes estimated CalEnviroScreen 4.0 scores and estimated
 population by racial / ethnic group for each neighborhood in the 1930s
 HOLC maps. Note that the CES scores and demographics in this dataset are
@@ -104,53 +104,59 @@ graph LR
   subgraph Graph
     direction LR
     x723651d51c4d9039>"ggplot_box_legend"]:::uptodate --> x9fc5d9228e2f8c78>"f_plot_scores_box_departure_legend"]:::uptodate
-    xbc38fdbb09f54cdc(["df_holc_ces_scores_summary"]):::uptodate --> x7774e14ad1201765(["sf_combined_results"]):::uptodate
-    x722c080414fdf571(["df_holc_demographics_summary"]):::uptodate --> x7774e14ad1201765(["sf_combined_results"]):::uptodate
-    xf90b49dd379c5312>"f_combine_computed_data"]:::uptodate --> x7774e14ad1201765(["sf_combined_results"]):::uptodate
-    xd358c84560a350ea(["sf_formatted_holc_data"]):::uptodate --> x7774e14ad1201765(["sf_combined_results"]):::uptodate
-    x661c36f456260220>"f_plot_scores_points_average_by_grade"]:::uptodate --> x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::uptodate
-    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::uptodate
-    xb84eb9d541120890>"f_compute_HOLC_CES_scores"]:::uptodate --> xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::uptodate
-    x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::uptodate
-    xd358c84560a350ea(["sf_formatted_holc_data"]):::uptodate --> xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::uptodate
-    x05780902aff2e52e>"f_plot_scores_points_departure"]:::uptodate --> x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate
-    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate
-    xd22b3ef3698af9c3>"f_plot_race_bars_by_group"]:::uptodate --> xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate
-    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate
-    xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
-    xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
-    xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
-    x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
-    x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
-    xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
-    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xe24c603975ef95ce(["summary_report"]):::outdated
-    xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::uptodate --> xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate
-    x1909355c81c03a12>"f_check_missing_CES_scores"]:::uptodate --> xcdcbc8327c73002a(["ces_scores_missing_check"]):::uptodate
-    x6a4e5ab768f76050>"f_plot_scores_points_raw"]:::uptodate --> xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::uptodate
-    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::uptodate
-    x4baab69ddc05606c>"f_compute_HOLC_demographics"]:::uptodate --> x0933fedf1eaed55e(["df_holc_demographics_calculations"]):::uptodate
-    x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> x0933fedf1eaed55e(["df_holc_demographics_calculations"]):::uptodate
-    xd358c84560a350ea(["sf_formatted_holc_data"]):::uptodate --> x0933fedf1eaed55e(["df_holc_demographics_calculations"]):::uptodate
-    x3566400abf0582d0>"f_process_holc_data"]:::uptodate --> xd358c84560a350ea(["sf_formatted_holc_data"]):::uptodate
-    x7deb259c829fdb2e(["raw_holc_data_files"]):::uptodate --> xd358c84560a350ea(["sf_formatted_holc_data"]):::uptodate
-    x13ecd6c730196e92>"f_plot_scores_box_departure"]:::uptodate --> xc0917568d2ce3bee(["plot_scores_box_departure"]):::uptodate
-    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xc0917568d2ce3bee(["plot_scores_box_departure"]):::uptodate
-    xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::uptodate --> xbc38fdbb09f54cdc(["df_holc_ces_scores_summary"]):::uptodate
-    x24483bb6f5885403>"f_summarize_HOLC_CES_scores"]:::uptodate --> xbc38fdbb09f54cdc(["df_holc_ces_scores_summary"]):::uptodate
-    x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> xbc38fdbb09f54cdc(["df_holc_ces_scores_summary"]):::uptodate
+    xbc38fdbb09f54cdc(["df_holc_ces_scores_summary"]):::outdated --> x7774e14ad1201765(["sf_combined_results"]):::outdated
+    x722c080414fdf571(["df_holc_demographics_summary"]):::outdated --> x7774e14ad1201765(["sf_combined_results"]):::outdated
+    xf90b49dd379c5312>"f_combine_computed_data"]:::uptodate --> x7774e14ad1201765(["sf_combined_results"]):::outdated
+    xd358c84560a350ea(["sf_formatted_holc_data"]):::outdated --> x7774e14ad1201765(["sf_combined_results"]):::outdated
+    x661c36f456260220>"f_plot_scores_points_average_by_grade"]:::uptodate --> x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::outdated
+    x7774e14ad1201765(["sf_combined_results"]):::outdated --> x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::outdated
+    xb84eb9d541120890>"f_compute_HOLC_CES_scores"]:::uptodate --> xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::outdated
+    x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::outdated
+    xd358c84560a350ea(["sf_formatted_holc_data"]):::outdated --> xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::outdated
+    x05780902aff2e52e>"f_plot_scores_points_departure"]:::uptodate --> x85db2b90c235dab6(["plot_scores_points_departure"]):::outdated
+    x7774e14ad1201765(["sf_combined_results"]):::outdated --> x85db2b90c235dab6(["plot_scores_points_departure"]):::outdated
+    xd22b3ef3698af9c3>"f_plot_race_bars_by_group"]:::uptodate --> xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::outdated
+    x7774e14ad1201765(["sf_combined_results"]):::outdated --> xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::outdated
+    xcdcbc8327c73002a(["ces_scores_missing_check"]):::outdated --> xe24c603975ef95ce(["summary_report"]):::outdated
+    xe2341aac6be6d5c3(["plot_race_bars_by_group"]):::outdated --> xe24c603975ef95ce(["summary_report"]):::outdated
+    xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::outdated --> xe24c603975ef95ce(["summary_report"]):::outdated
+    x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::outdated --> xe24c603975ef95ce(["summary_report"]):::outdated
+    x85db2b90c235dab6(["plot_scores_points_departure"]):::outdated --> xe24c603975ef95ce(["summary_report"]):::outdated
+    xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::outdated --> xe24c603975ef95ce(["summary_report"]):::outdated
+    x7774e14ad1201765(["sf_combined_results"]):::outdated --> xe24c603975ef95ce(["summary_report"]):::outdated
+    xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::outdated --> xcdcbc8327c73002a(["ces_scores_missing_check"]):::outdated
+    x1909355c81c03a12>"f_check_missing_CES_scores"]:::uptodate --> xcdcbc8327c73002a(["ces_scores_missing_check"]):::outdated
+    x6a4e5ab768f76050>"f_plot_scores_points_raw"]:::uptodate --> xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::outdated
+    x7774e14ad1201765(["sf_combined_results"]):::outdated --> xd06bbe78c7eb9f6c(["plot_scores_points_raw"]):::outdated
+    x4baab69ddc05606c>"f_compute_HOLC_demographics"]:::uptodate --> x0933fedf1eaed55e(["df_holc_demographics_calculations"]):::outdated
+    x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> x0933fedf1eaed55e(["df_holc_demographics_calculations"]):::outdated
+    xd358c84560a350ea(["sf_formatted_holc_data"]):::outdated --> x0933fedf1eaed55e(["df_holc_demographics_calculations"]):::outdated
+    x3566400abf0582d0>"f_process_holc_data"]:::uptodate --> xd358c84560a350ea(["sf_formatted_holc_data"]):::outdated
+    xc134b761ca90db6a(["holc_area_descriptions"]):::outdated --> xd358c84560a350ea(["sf_formatted_holc_data"]):::outdated
+    x7deb259c829fdb2e(["raw_holc_data_files"]):::uptodate --> xd358c84560a350ea(["sf_formatted_holc_data"]):::outdated
+    x13ecd6c730196e92>"f_plot_scores_box_departure"]:::uptodate --> xc0917568d2ce3bee(["plot_scores_box_departure"]):::outdated
+    x7774e14ad1201765(["sf_combined_results"]):::outdated --> xc0917568d2ce3bee(["plot_scores_box_departure"]):::outdated
+    xf2cacda6c5be1d56(["df_holc_ces_scores_calculations"]):::outdated --> xbc38fdbb09f54cdc(["df_holc_ces_scores_summary"]):::outdated
+    x24483bb6f5885403>"f_summarize_HOLC_CES_scores"]:::uptodate --> xbc38fdbb09f54cdc(["df_holc_ces_scores_summary"]):::outdated
+    x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> xbc38fdbb09f54cdc(["df_holc_ces_scores_summary"]):::outdated
     x7ad41e3fd12f2676(["ces_names_file"]):::uptodate --> x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate
     xdca65f7684d779f0>"f_process_ces_data"]:::uptodate --> x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate
     x6538bfb2bd8fa5af(["raw_ces_data_file"]):::uptodate --> x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate
-    x9fc5d9228e2f8c78>"f_plot_scores_box_departure_legend"]:::uptodate --> xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate
-    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::uptodate
-    xf443f725966ed075{{"last_report_update"}}:::uptodate --> x3b5990520b2e818d(["summary_report_html"]):::outdated
-    xc11e093e8a0331b6>"f_plot_map_panels"]:::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
-    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
-    x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
-    xd358c84560a350ea(["sf_formatted_holc_data"]):::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
+    x9fc5d9228e2f8c78>"f_plot_scores_box_departure_legend"]:::uptodate --> xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::outdated
+    x7774e14ad1201765(["sf_combined_results"]):::outdated --> xd261dc6bb4fd422e(["plot_scores_box_departure_legend"]):::outdated
+    xf443f725966ed075{{"last_report_update"}}:::uptodate --> x3b5990520b2e818d(["summary_report_html"]):::uptodate
+    xe7b24c87dabecd62>"f_parse_holc_descriptions"]:::uptodate --> xc134b761ca90db6a(["holc_area_descriptions"]):::outdated
+    x7deb259c829fdb2e(["raw_holc_data_files"]):::uptodate --> xc134b761ca90db6a(["holc_area_descriptions"]):::outdated
+    xc11e093e8a0331b6>"f_plot_map_panels"]:::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::outdated
+    x7774e14ad1201765(["sf_combined_results"]):::outdated --> x52b2d35838d1c908(["plot_map_panels"]):::outdated
+    x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::outdated
+    xd358c84560a350ea(["sf_formatted_holc_data"]):::outdated --> x52b2d35838d1c908(["plot_map_panels"]):::outdated
     xc504145cdabdd854>"f_download_raw_ces_data"]:::uptodate --> x6538bfb2bd8fa5af(["raw_ces_data_file"]):::uptodate
-    x0933fedf1eaed55e(["df_holc_demographics_calculations"]):::uptodate --> x722c080414fdf571(["df_holc_demographics_summary"]):::uptodate
-    x2dfdf1b5ee4ba094>"f_summarize_HOLC_demographics"]:::uptodate --> x722c080414fdf571(["df_holc_demographics_summary"]):::uptodate
+    x0933fedf1eaed55e(["df_holc_demographics_calculations"]):::outdated --> x722c080414fdf571(["df_holc_demographics_summary"]):::outdated
+    x2dfdf1b5ee4ba094>"f_summarize_HOLC_demographics"]:::uptodate --> x722c080414fdf571(["df_holc_demographics_summary"]):::outdated
+    xb84eb9d541120890>"f_compute_HOLC_CES_scores"]:::uptodate --> x03e01758e45bc154(["sf_holc_ces_scores_centroids"]):::outdated
+    x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate --> x03e01758e45bc154(["sf_holc_ces_scores_centroids"]):::outdated
+    xd358c84560a350ea(["sf_formatted_holc_data"]):::outdated --> x03e01758e45bc154(["sf_holc_ces_scores_centroids"]):::outdated
     x28598aa74e36431d>"f_download_raw_holc_data"]:::uptodate --> x7deb259c829fdb2e(["raw_holc_data_files"]):::uptodate
     x118ccf0169559b01(["readme_file"]):::outdated --> x118ccf0169559b01(["readme_file"]):::outdated
     xd244e8c357cc9580(["targets_notes_file"]):::uptodate --> xd244e8c357cc9580(["targets_notes_file"]):::uptodate
@@ -162,8 +168,8 @@ graph LR
   linkStyle 1 stroke-width:0px;
   linkStyle 2 stroke-width:0px;
   linkStyle 3 stroke-width:0px;
-  linkStyle 53 stroke-width:0px;
-  linkStyle 54 stroke-width:0px;
+  linkStyle 59 stroke-width:0px;
+  linkStyle 60 stroke-width:0px;
 ```
 
 ### Package Management - {renv}

@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -211,51 +177,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="missing-scores" class="level2">
 <h2 class="anchored" data-anchor-id="missing-scores">Missing Scores</h2>
-<p>Some census tracts are not assigned a score for individual CES 4.0 indicators or an overall CES 4.0 score. In cases where these census tracts overlap with HOLC neighborhoods, we use a minimum threshold…</p>
-<p>There are 3 HOLC neighborhoods with missing CES 4.0 scores. The table below provides a summary of the number of HOLC neighborhoods with missing CES scores by CES measure and HOLC grade.</p>
+<p>Some census tracts are not assigned a score for individual CES 4.0 indicators, or an overall CES 4.0 score. Of the 8035 total census tracts contained the in CES dataset, there are 103 tracts with missing overall CES scores, and varying numbers of tracts with missing scores for individual indicators - this includes 23 tracts with zero population.</p>
+<p>Because some census tracts that are not assigned a CES score overlap with some HOLC neighborhoods, a minimum coverage threshold (as a percent of each HOLC neighborhood area covered by CES tracts with scores) is applied to determine which HOLC neighborhoods to assign CES scores to. A HOLC neighborhood is only assigned a CES score if the area covered by CES tracts with scores exceeds the minimum coverage threshold; otherwise, the HOLC neighborhood is assigned a NA (i.e., missing) value.</p>
+<p>In our analysis, we use a minimum coverage threshold of 0.5. Using this threshold, there are 3 HOLC neighborhoods which fall below the threshold, and are not assigned a CES 4.0 score (i.e., they are given an <code>NA</code> value).</p>
+<p>The table below provides a summary of the number of HOLC neighborhoods with missing CES scores by CES measure and HOLC grade.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sf_combined_results <span class="ot">&lt;-</span> targets<span class="sc">::</span><span class="fu">tar_read</span>(sf_combined_results,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">store =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="fu">tar_config_get</span>(<span class="st">'store'</span>))) <span class="co"># allows for manual rendering</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>holc_grade_counts <span class="ot">&lt;-</span> sf_combined_results <span class="sc">%&gt;%</span> </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(holc_grade, <span class="at">name =</span> <span class="st">'n_total'</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>missing_summary_all <span class="ot">&lt;-</span> ces_scores_missing_check <span class="sc">%&gt;%</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(ces_measure, holc_grade) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">n_missing =</span> <span class="fu">sum</span>(n_missing)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(holc_grade_counts) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">pct_missing =</span> n_missing <span class="sc">/</span> n_total <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">pct_missing =</span> <span class="fu">format</span>(<span class="fu">round</span>(<span class="at">x =</span> pct_missing, </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">digits =</span> <span class="dv">2</span>), </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                <span class="at">nsmall =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">pct_missing =</span> <span class="fu">paste0</span>(<span class="fu">as.character</span>(pct_missing), <span class="st">'%'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'ces_measure'. You can override using the
 `.groups` argument.
 Joining with `by = join_by(holc_grade)`</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>missing_summary_all <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="qftvxlspdx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qftvxlspdx table {
+<div id="gfaqcyudlp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gfaqcyudlp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qftvxlspdx thead, #qftvxlspdx tbody, #qftvxlspdx tfoot, #qftvxlspdx tr, #qftvxlspdx td, #qftvxlspdx th {
+#gfaqcyudlp thead, #gfaqcyudlp tbody, #gfaqcyudlp tfoot, #gfaqcyudlp tr, #gfaqcyudlp td, #gfaqcyudlp th {
   border-style: none;
 }
 
-#qftvxlspdx p {
+#gfaqcyudlp p {
   margin: 0;
   padding: 0;
 }
 
-#qftvxlspdx .gt_table {
+#gfaqcyudlp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -281,12 +231,12 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#qftvxlspdx .gt_caption {
+#gfaqcyudlp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qftvxlspdx .gt_title {
+#gfaqcyudlp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -298,7 +248,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   border-bottom-width: 0;
 }
 
-#qftvxlspdx .gt_subtitle {
+#gfaqcyudlp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -310,7 +260,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   border-top-width: 0;
 }
 
-#qftvxlspdx .gt_heading {
+#gfaqcyudlp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -322,13 +272,13 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#qftvxlspdx .gt_bottom_border {
+#gfaqcyudlp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qftvxlspdx .gt_col_headings {
+#gfaqcyudlp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -343,7 +293,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#qftvxlspdx .gt_col_heading {
+#gfaqcyudlp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -363,7 +313,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   overflow-x: hidden;
 }
 
-#qftvxlspdx .gt_column_spanner_outer {
+#gfaqcyudlp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -375,15 +325,15 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   padding-right: 4px;
 }
 
-#qftvxlspdx .gt_column_spanner_outer:first-child {
+#gfaqcyudlp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qftvxlspdx .gt_column_spanner_outer:last-child {
+#gfaqcyudlp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qftvxlspdx .gt_column_spanner {
+#gfaqcyudlp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -395,11 +345,11 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   width: 100%;
 }
 
-#qftvxlspdx .gt_spanner_row {
+#gfaqcyudlp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qftvxlspdx .gt_group_heading {
+#gfaqcyudlp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -425,7 +375,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   text-align: left;
 }
 
-#qftvxlspdx .gt_empty_group_heading {
+#gfaqcyudlp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -440,15 +390,15 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   vertical-align: middle;
 }
 
-#qftvxlspdx .gt_from_md > :first-child {
+#gfaqcyudlp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qftvxlspdx .gt_from_md > :last-child {
+#gfaqcyudlp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qftvxlspdx .gt_row {
+#gfaqcyudlp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -467,7 +417,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   overflow-x: hidden;
 }
 
-#qftvxlspdx .gt_stub {
+#gfaqcyudlp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -480,7 +430,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   padding-right: 5px;
 }
 
-#qftvxlspdx .gt_stub_row_group {
+#gfaqcyudlp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -494,15 +444,15 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   vertical-align: top;
 }
 
-#qftvxlspdx .gt_row_group_first td {
+#gfaqcyudlp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qftvxlspdx .gt_row_group_first th {
+#gfaqcyudlp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qftvxlspdx .gt_summary_row {
+#gfaqcyudlp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -512,16 +462,16 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   padding-right: 5px;
 }
 
-#qftvxlspdx .gt_first_summary_row {
+#gfaqcyudlp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qftvxlspdx .gt_first_summary_row.thick {
+#gfaqcyudlp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qftvxlspdx .gt_last_summary_row {
+#gfaqcyudlp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -531,7 +481,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#qftvxlspdx .gt_grand_summary_row {
+#gfaqcyudlp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -541,7 +491,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   padding-right: 5px;
 }
 
-#qftvxlspdx .gt_first_grand_summary_row {
+#gfaqcyudlp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -551,7 +501,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#qftvxlspdx .gt_last_grand_summary_row_top {
+#gfaqcyudlp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -561,11 +511,11 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#qftvxlspdx .gt_striped {
+#gfaqcyudlp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qftvxlspdx .gt_table_body {
+#gfaqcyudlp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -574,7 +524,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#qftvxlspdx .gt_footnotes {
+#gfaqcyudlp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -588,7 +538,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#qftvxlspdx .gt_footnote {
+#gfaqcyudlp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -597,7 +547,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   padding-right: 5px;
 }
 
-#qftvxlspdx .gt_sourcenotes {
+#gfaqcyudlp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -611,7 +561,7 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#qftvxlspdx .gt_sourcenote {
+#gfaqcyudlp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -619,63 +569,63 @@ Joining with `by = join_by(holc_grade)`</code></pre>
   padding-right: 5px;
 }
 
-#qftvxlspdx .gt_left {
+#gfaqcyudlp .gt_left {
   text-align: left;
 }
 
-#qftvxlspdx .gt_center {
+#gfaqcyudlp .gt_center {
   text-align: center;
 }
 
-#qftvxlspdx .gt_right {
+#gfaqcyudlp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qftvxlspdx .gt_font_normal {
+#gfaqcyudlp .gt_font_normal {
   font-weight: normal;
 }
 
-#qftvxlspdx .gt_font_bold {
+#gfaqcyudlp .gt_font_bold {
   font-weight: bold;
 }
 
-#qftvxlspdx .gt_font_italic {
+#gfaqcyudlp .gt_font_italic {
   font-style: italic;
 }
 
-#qftvxlspdx .gt_super {
+#gfaqcyudlp .gt_super {
   font-size: 65%;
 }
 
-#qftvxlspdx .gt_footnote_marks {
+#gfaqcyudlp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qftvxlspdx .gt_asterisk {
+#gfaqcyudlp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qftvxlspdx .gt_indent_1 {
+#gfaqcyudlp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qftvxlspdx .gt_indent_2 {
+#gfaqcyudlp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qftvxlspdx .gt_indent_3 {
+#gfaqcyudlp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qftvxlspdx .gt_indent_4 {
+#gfaqcyudlp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qftvxlspdx .gt_indent_5 {
+#gfaqcyudlp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -836,7 +786,29 @@ Joining with `by = join_by(holc_grade)`</code></pre>
 </section>
 <section id="comparison-of-alternative-methods" class="level2">
 <h2 class="anchored" data-anchor-id="comparison-of-alternative-methods">Comparison of Alternative Methods</h2>
-<p>To test the sensitivity of the computed CES scores to the analysis method, we tried an alternative method and compared the results to the area weighted average method.</p>
+<p>To test the sensitivity of the estimated CES scores to the method used to compute the scores, we also estimated the overall CES score for each HOLC neighborhood using an alternative method - nearest centroid matching - and compared the results to those obtained from our original area weighted average method. This nearest centroid approach finds the CES census tract (excluding tracts without CES scores) whose centriod is closest to the centroid of each HOLC neighborhood, and assigns the CES score of the matched census tract to that HOLC neighborhood. If the results from the two methods are substantially the same, we can infer that the estimated CES scores are not highly sensitive to different calculation methods, and therefore have greater confidence in our estimated CES scores.</p>
+<p>fig-score-method-comparison shows how the CES scores estimated for each HOLC neighborhood using the two methods compare across all HOLC grades.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-score-method-comparison" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="summary_report_files/figure-html/fig-score-method-comparison-1.png" class="img-fluid figure-img" width="1800"></p>
+<figcaption class="figure-caption">Figure&nbsp;7: Comparison of CES scores computed with the area weighted average and nearest centroid methods.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>fig-score-method-comparison-facet shows how the CES scores estimated for each HOLC neighborhood using the two methods compare for each of the four HOLC grades individually.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-score-method-comparison-facet" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="summary_report_files/figure-html/fig-score-method-comparison-facet-1.png" class="img-fluid figure-img" width="1800"></p>
+<figcaption class="figure-caption">Figure&nbsp;8: Comparison of CES scores computed with the area weighted average and nearest centroid methods, by HOLC grade.</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 
 </main>

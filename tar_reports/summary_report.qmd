@@ -143,25 +143,42 @@ targets::tar_read(plot_race_bars_by_group,
 
 ```
 
+
 ## Missing Scores
 
 ```{r}
 #| echo: false
 
+## load missing scores summary ----
 ces_scores_missing_check <- targets::tar_read(ces_scores_missing_check,
-                  store = here::here(tar_config_get('store'))) # allows for manual rendering
+                                              store = here::here(tar_config_get('store'))) # allows for manual rendering
 
-missing_ces <- ces_scores_missing_check %>%  
+## missing scores summary for overall CES scores
+missing_ces <- ces_scores_missing_check %>%
     filter(ces_measure == 'calenviroscreen_4_0_score')
+
+## load CES data
+df_ces_data <- targets::tar_read(sf_formatted_ces_data,
+                                 store = here::here(tar_config_get('store'))) %>%
+    st_drop_geometry()
+
+## load CES coverage threshold value
+ces_coverage_threshold <- targets::tar_read(ces_coverage_threshold,
+         store = here::here(tar_config_get('store')))
 ```
 
-Some census tracts are not assigned a score for individual CES 4.0 indicators or an overall CES 4.0 score. In cases where these census tracts overlap with HOLC neighborhoods, we use a minimum threshold...
+Some census tracts are not assigned a score for individual CES 4.0 indicators, or an overall CES 4.0 score. Of the `r nrow(df_ces_data)` total census tracts contained the in CES dataset, there are `r sum(is.na(df_ces_data$calenviroscreen_4_0_score))` tracts with missing overall CES scores, and varying numbers of tracts with missing scores for individual indicators - this includes `r sum(df_ces_data$total_population_2019_acs == 0)` tracts with zero population.
 
-There are `r nrow(missing_ces)` HOLC neighborhoods with missing CES 4.0 scores. The table below provides a summary of the number of HOLC neighborhoods with missing CES scores by CES measure and HOLC grade.
+Because some census tracts that are not assigned a CES score overlap with some HOLC neighborhoods, a minimum coverage threshold (as a percent of each HOLC neighborhood area covered by CES tracts with scores) is applied to determine which HOLC neighborhoods to assign CES scores to. A HOLC neighborhood is only assigned a CES score if the area covered by CES tracts with scores exceeds the minimum coverage threshold; otherwise, the HOLC neighborhood is assigned a NA (i.e., missing) value.
+
+In our analysis, we use a minimum coverage threshold of `r ces_coverage_threshold`. Using this threshold, there are `r nrow(missing_ces)` HOLC neighborhoods which fall below the threshold, and are not assigned a CES 4.0 score (i.e., they are given an `NA` value). 
+
+The table below provides a summary of the number of HOLC neighborhoods with missing CES scores by CES measure and HOLC grade.
 
 ```{r}
+#| echo: false
 sf_combined_results <- targets::tar_read(sf_combined_results,
-                  store = here::here(tar_config_get('store'))) # allows for manual rendering
+                                         store = here::here(tar_config_get('store'))) # allows for manual rendering
 
 holc_grade_counts <- sf_combined_results %>% 
     st_drop_geometry() %>% 
@@ -184,4 +201,33 @@ missing_summary_all %>%
 
 ## Comparison of Alternative Methods
 
-To test the sensitivity of the computed CES scores to the analysis method, we tried an alternative method and compared the results to the area weighted average method. 
+To test the sensitivity of the estimated CES scores to the method used to compute the scores, we also estimated the overall CES score for each HOLC neighborhood using an alternative method - nearest centroid matching - and compared the results to those obtained from our original area weighted average method. This nearest centroid approach finds the CES census tract (excluding tracts without CES scores) whose centriod is closest to the centroid of each HOLC neighborhood, and assigns the CES score of the matched census tract to that HOLC neighborhood. If the results from the two methods are substantially the same, we can infer that the estimated CES scores are not highly sensitive to different calculation methods, and therefore have greater confidence in our estimated CES scores.
+
+fig-score-method-comparison shows how the CES scores estimated for each HOLC neighborhood using the two methods compare across all HOLC grades. 
+
+```{r}
+#| label: fig-score-method-comparison
+#| fig-cap: "Comparison of CES scores computed with the area weighted average and nearest centroid methods."
+#| warning: false
+#| fig.height: 6
+#| fig.width: 6
+#| dpi: 300
+#| echo: false
+
+targets::tar_read(plot_scores_method_comparison_scatter,
+                  store = here::here(tar_config_get('store'))) # allows for manual rendering
+```
+
+fig-score-method-comparison-facet shows how the CES scores estimated for each HOLC neighborhood using the two methods compare for each of the four HOLC grades individually.
+```{r}
+#| label: fig-score-method-comparison-facet
+#| fig-cap: "Comparison of CES scores computed with the area weighted average and nearest centroid methods, by HOLC grade."
+#| warning: false
+#| fig.height: 6
+#| fig.width: 6
+#| dpi: 300
+#| echo: false
+
+targets::tar_read(plot_scores_method_comparison_scatter_facet,
+                  store = here::here(tar_config_get('store'))) # allows for manual rendering
+```

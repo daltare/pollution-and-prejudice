@@ -57,10 +57,10 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
             clean_names()
         write_csv(x = df_description_fr, 
                   file = here(output_directory, 
-                              'redline_fresno_area-descriptions.csv'))
+                              'HOLC_fresno_area-descriptions.csv'))
         # write_xlsx(x = df_description_fr, 
         #            path = here(output_directory,
-        #                        'redline_fresno_area-descriptions.xlsx'))    
+        #                        'HOLC_fresno_area-descriptions.xlsx'))    
     }
     
     
@@ -93,10 +93,10 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
             clean_names()
         write_csv(x = df_description_sd, 
                   file = here(output_directory, 
-                              'redline_san_diego_area-descriptions.csv'))
+                              'HOLC_san_diego_area-descriptions.csv'))
         # write_xlsx(x = df_description_sd, 
         #            path = here(output_directory,
-        #                        'redline_san_diego_area-descriptions.xlsx')) 
+        #                        'HOLC_san_diego_area-descriptions.xlsx')) 
     }
     
     
@@ -128,10 +128,10 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
             clean_names()
         write_csv(x = df_description_sf, 
                   file = here(output_directory, 
-                              'redline_san_francisco_area-descriptions.csv'))
+                              'HOLC_san_francisco_area-descriptions.csv'))
         # write_xlsx(x = df_description_sf, 
         #            path = here(output_directory,
-        #                        'redline_san_francisco_area-descriptions.xlsx'))  
+        #                        'HOLC_san_francisco_area-descriptions.xlsx'))  
     }
     
     
@@ -227,10 +227,10 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
         
         write_csv(x = df_description_la, 
                   file = here(output_directory, 
-                              'redline_los-angeles_area-descriptions.csv'))
+                              'HOLC_los-angeles_area-descriptions.csv'))
         # write_xlsx(x = df_description_la, 
         #            path = here(output_directory, 
-        #                        'redline_los-angeles_area-descriptions.xlsx'))
+        #                        'HOLC_los-angeles_area-descriptions.xlsx'))
     }   
     
     
@@ -306,10 +306,10 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
             clean_names()
         write_csv(x = df_description_sac, 
                   file = here(output_directory, 
-                              'redline_sacramento_area-descriptions.csv'))
+                              'HOLC_sacramento_area-descriptions.csv'))
         # write_xlsx(x = df_description_sac, 
         #            path = here(output_directory, 
-        #                        'redline_sacramento_area-descriptions.xlsx'))
+        #                        'HOLC_sacramento_area-descriptions.xlsx'))
     }  
     
     
@@ -389,10 +389,10 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
             clean_names()
         write_csv(x = df_description_stk, 
                   file = here(output_directory, 
-                              'redline_stockton_area-descriptions.csv'))
+                              'HOLC_stockton_area-descriptions.csv'))
         # write_xlsx(x = df_description_stk, 
         #            path = here(output_directory, 
-        #                        'redline_stockton_area-descriptions.xlsx'))    
+        #                        'HOLC_stockton_area-descriptions.xlsx'))    
     }
     
     
@@ -469,10 +469,10 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
             clean_names()
         write_csv(x = df_description_oak, 
                   file = here(output_directory, 
-                              'redline_oakland_area-descriptions.csv'))
+                              'HOLC_oakland_area-descriptions.csv'))
         # write_xlsx(x = df_description_oak, 
         #            path = here(output_directory, 
-        #                        'redline_oakland_area-descriptions.xlsx'))    
+        #                        'HOLC_oakland_area-descriptions.xlsx'))    
     }   
     
     
@@ -549,10 +549,10 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
             clean_names()
         write_csv(x = df_description_sj, 
                   file = here(output_directory, 
-                              'redline_san-jose_area-descriptions.csv'))
+                              'HOLC_san-jose_area-descriptions.csv'))
         # write_xlsx(x = df_description_sj, 
         #            path = here(output_directory, 
-        #                        'redline_san-jose_area-descriptions.xlsx'))    
+        #                        'HOLC_san-jose_area-descriptions.xlsx'))    
     }   
     
     
@@ -585,10 +585,10 @@ f_parse_holc_descriptions <- function(raw_holc_data_files,
     # Save to file ------------------------------------------------------------
     write_csv(x = df_description_combined, 
               file = here(output_directory, 
-                          '_redline_combined_area-descriptions.csv'))
+                          '_HOLC_combined_area-descriptions.csv'))
     # write_xlsx(x = df_description_combined, 
     #            path = here(output_directory, 
-    #                        '_redline_combined_area-descriptions.xlsx'))  
+    #                        '_HOLC_combined_area-descriptions.xlsx'))  
     
     
     

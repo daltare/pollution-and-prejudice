@@ -14,6 +14,7 @@
 f_combine_computed_data <- function(df_holc_ces_scores_summary, 
                                     df_holc_demographics_summary, 
                                     sf_formatted_holc_data,
+                                    output_file_name,
                                     output_directory, 
                                     projected_crs = 3310) {
     
@@ -43,7 +44,7 @@ f_combine_computed_data <- function(df_holc_ces_scores_summary,
     ## save to geopackage file ----
     st_write(sf_combined_summary, 
              here(output_directory, 
-                       'redline_CES_scores.gpkg'),
+                  output_file_name),
              append = FALSE
     )
     

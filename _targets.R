@@ -109,12 +109,22 @@ list(
                command = f_process_holc_data(
                    raw_holc_data_files,
                    holc_area_descriptions,
-                   output_file_name = 'redline_maps_processed',
+                   output_file_name = 'HOLC_maps_processed',
                    output_directory = 'tar_data_processed/holc_data')
     ),
     
     
     ### 02 - calculate CES scores & demographics -------------------------------
+    #### 02a - assign minimum CES coverage threshold ----
+    ## (this represents the minimum portion of a HOLC neighborhood's area that needs to 
+    ## be covered by CES tracts that have CES scores (for any given CES indicator) 
+    ## in order to assign a score to a HOLC neighborhood - some tracts are missing 
+    ## scores for individual indicators or overall CES scores)
+    tar_target(name = ces_coverage_threshold, 
+               command = {
+                   ces_coverage_threshold <- 0.5
+               }
+    ),
     #### 02a - calculate CES scores (by HOLC neighborhood) ----
     tar_target(name = df_holc_ces_scores_calculations, 
                command = f_compute_HOLC_CES_scores(
@@ -123,7 +133,7 @@ list(
                    ## set minimum portion of a HOLC polygon that must be covered 
                    ## by CES polygon(s) with CES score for given CES measure
                    ## (if coverage < threshold, set CES score to NA for that measure)
-                   ces_coverage_threshold = 0.5)
+                   ces_coverage_threshold)
     ),
     tar_target(name = ces_scores_missing_check,
                command = f_check_missing_CES_scores(
@@ -146,6 +156,27 @@ list(
                    df_holc_demographics_calculations)
     ),
     
+    #### 02c - calculate / compare nearest centroid CES scores (by HOLC neighborhood) ----
+    tar_target(name = sf_holc_ces_scores_centroids, 
+               command = f_compute_HOLC_CES_scores_centroids(
+                   sf_formatted_ces_data, 
+                   sf_formatted_holc_data, 
+                   ces_measure_id = 'calenviroscreen_4_0_score',
+                   output_file_name = 'HOLC_CES_scores_centroids.gpkg',
+                   output_directory = 'tar_data_results')
+    ),
+    tar_target(name = df_holc_ces_scores_comparison, 
+               command = f_combine_HOLC_CES_score_methods(
+                   df_holc_ces_scores_calculations,
+                   sf_holc_ces_scores_centroids,
+                   ces_measure_id = 'calenviroscreen_4_0_score'
+               )
+    ),
+    tar_target(name = holc_ces_score_methods_correlation, 
+               command = f_HOLC_CES_score_methods_correlation(
+                   df_holc_ces_scores_comparison
+               )
+    ),
     
     ### 03 - combine data & create output file ---------------------------------
     tar_target(name = sf_combined_results, 
@@ -153,6 +184,7 @@ list(
                    df_holc_ces_scores_summary, 
                    df_holc_demographics_summary,
                    sf_formatted_holc_data,
+                   output_file_name = 'HOLC_CES_scores_demographics.gpkg',
                    output_directory = 'tar_data_results')
     ),
     
@@ -229,6 +261,25 @@ list(
                    output_file_name = '99_departure-score_box_by-holc-grade_with-legend',
                    error_bar = TRUE,
                    outer_point = FALSE)
+    ),
+    #### 04 - CES scores method comparison  ----
+    tar_target(name = plot_scores_method_comparison_scatter, 
+               command = f_plot_scores_method_comparison_scatter(
+                   df_holc_ces_scores_comparison,
+                   ces_measure_id = 'calenviroscreen_4_0_score',
+                   ces_measure_title = 'CES 4.0 Score',
+                   output_directory = 'tar_plots',
+                   output_file_name = '99_score_method_comparison_scatter'
+               )
+    ),
+    tar_target(name = plot_scores_method_comparison_scatter_facet, 
+               command = f_plot_scores_method_comparison_scatter_facet(
+                   df_holc_ces_scores_comparison,
+                   ces_measure_id = 'calenviroscreen_4_0_score',
+                   ces_measure_title = 'CES 4.0 Score',
+                   output_directory = 'tar_plots',
+                   output_file_name = '99_score_method_comparison_scatter_facet'
+               )
     ),
     
     

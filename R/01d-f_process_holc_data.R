@@ -103,7 +103,7 @@ f_process_holc_data <- function(raw_holc_data_files,
         mutate(holc_id_mod = cumsum(holc_id_mod)) %>% 
         ungroup() %>% 
         mutate(holc_id_mod = case_when(
-            is.na(holc_id) ~ paste0(holc_grade, 'noid', holc_id_mod),
+            is.na(holc_id) ~ paste0(holc_grade, '-noid-', holc_id_mod),
             .default = holc_id)) #%>% 
         # mutate(holc_id = holc_id_mod) %>% 
         # select(-holc_id_mod)
