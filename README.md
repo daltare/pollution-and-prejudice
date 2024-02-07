@@ -32,6 +32,8 @@ also explore the present-day racial / ethnic makeup of those
 neighborhoods, to assess whether racial disparities by HOLC grade tend
 to persist today.
 
+------------------------------------------------------------------------
+
 ## Data Sources
 
 The primary data sources used in this analysis are:
@@ -58,6 +60,8 @@ The primary data sources used in this analysis are:
     TIGER data) is available to download at [this
     link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_processed/ces_data/calenviroscreen_4-0_processed_tiger_simple.gpkg)
 
+------------------------------------------------------------------------
+
 ## Analytical Process and Results
 
 For an overview of the analytical process and results, see the
@@ -73,6 +77,8 @@ HOLC maps. Note that the CES scores and demographics in this dataset are
 estimates that are intended to be used for relative comparisons across
 groups, and should be used with caution when looking at individual or
 small numbers of neighborhoods in isolation.
+
+------------------------------------------------------------------------
 
 ## Reproducibility
 
@@ -190,6 +196,31 @@ graph LR
 
 This project uses
 [`renv`](https://rstudio.github.io/renv/articles/renv.html) for package
-management. When opening this project as an RStudio Project for the
-first time, `renv` should automatically install itself and prompt you to
-run `renv::restore()` to install all package dependencies.
+management (the `renv` package creates the `renv.lock` file, i.e. the
+lockfile). When opening this project as an RStudio Project for the first
+time, `renv` should automatically install itself and prompt you to run
+`renv::restore()` to install all package dependencies. In addition:
+
+- Call
+  [`renv::status()`](https://rstudio.github.io/renv/reference/status.html)
+  to check the status and fix any issues that arise (using the commands
+  below)
+- Developers can call
+  [`renv::install()`](https://rstudio.github.io/renv/reference/install.html)
+  to add packages,
+  [`renv::update()`](https://rstudio.github.io/renv/reference/update.html)
+  to update package versions, and
+  [`renv::snapshot()`](https://rstudio.github.io/renv/reference/snapshot.html)
+  after packages are added or updated (which will record the packages
+  and their sources in the lockfile)
+- Collaborators can call
+  [`renv::restore()`](https://rstudio.github.io/renv/reference/restore.html)
+  (to get the specific package versions recorded in the lockfile).
+- The renv documentation notes that if you’re making major changes to a
+  project that you haven’t worked on for a while, it’s often a good idea
+  to start with
+  an [`renv::update()`](https://rstudio.github.io/renv/reference/update.html) before
+  making any changes to the code.
+
+For more information, see [Introduction to
+renv](https://rstudio.github.io/renv/articles/renv.html).
