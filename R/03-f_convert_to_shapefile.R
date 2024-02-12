@@ -16,8 +16,8 @@ f_convert_to_shapefile <- function(sf_combined_summary,
                                    output_directory) {
     
     ## make sure the output directory exists ----
-    if (!dir.exists(here(output_directory, output_file_name))) {
-        dir.create(here(output_directory, output_file_name),
+    if (!dir.exists(here(output_directory))) {
+        dir.create(here(output_directory),
                    recursive = TRUE)
     }
     
@@ -32,24 +32,19 @@ f_convert_to_shapefile <- function(sf_combined_summary,
     
     ## save to shapefile ----
     st_write(sf_combined_summary_rev, 
-             here(output_directory, output_file_name,
-                  paste0(output_file_name, '.shp')),
+             here(output_directory,
+                  paste0(output_file_name)),
              append = FALSE
     )
     
     ## zip shapefile ----
-    zip::zip(zipfile = here(output_directory, paste0(output_file_name, '.zip')),  
-             files = dir(here(output_directory, output_file_name), full.names = TRUE), 
+    zip::zip(zipfile = paste0(here(output_directory), '.zip'),  
+             files = dir(here(output_directory), full.names = TRUE), 
              mode =  'cherry-pick')
     
     ## remove unzipped shapefile
-    unlink(here(output_directory, output_file_name), recursive = TRUE)
-    
+    unlink(here(output_directory), recursive = TRUE)
     
     ## return path to file ----
-    return(here(output_directory, 
-                paste0(output_file_name, '.zip')
-                )
-           )
-    
+    return(paste0(here(output_directory), '.zip'))
 }

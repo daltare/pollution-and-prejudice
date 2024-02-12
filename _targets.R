@@ -194,8 +194,8 @@ list(
     tar_target(name = write_shapefile, 
                command = f_convert_to_shapefile(
                    sf_combined_results, 
-                   output_file_name = 'HOLC_CES_scores_demographics',
-                   output_directory = 'tar_data_results'),
+                   output_file_name = 'HOLC_CES_scores_demographics.shp',
+                   output_directory = 'tar_data_results/HOLC_CES_scores_demographics_shp'),
                format = 'file'
     ),
     
