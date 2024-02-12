@@ -4,6 +4,7 @@
 # library(tidyverse)
 # library(here)
 # library(sf)
+# library(zip)
 # 
 # ## conflicts ----
 # library(conflicted)
@@ -15,8 +16,8 @@ f_convert_to_shapefile <- function(sf_combined_summary,
                                    output_directory) {
     
     ## make sure the output directory exists ----
-    if (!dir.exists(here(output_directory))) {
-        dir.create(here(output_directory),
+    if (!dir.exists(here(output_directory, output_file_name))) {
+        dir.create(here(output_directory, output_file_name),
                    recursive = TRUE)
     }
     
@@ -31,13 +32,24 @@ f_convert_to_shapefile <- function(sf_combined_summary,
     
     ## save to shapefile ----
     st_write(sf_combined_summary_rev, 
-             here(output_directory, 
-                  output_file_name),
+             here(output_directory, output_file_name,
+                  paste0(output_file_name, '.shp')),
              append = FALSE
     )
     
+    ## zip shapefile ----
+    zip::zip(zipfile = here(output_directory, paste0(output_file_name, '.zip')),  
+             files = dir(here(output_directory, output_file_name), full.names = TRUE), 
+             mode =  'cherry-pick')
+    
+    ## remove unzipped shapefile
+    unlink(here(output_directory, output_file_name), recursive = TRUE)
+    
+    
     ## return path to file ----
-    return(here(output_directory,
-                glue('{output_file_name}')))
+    return(here(output_directory, 
+                paste0(output_file_name, '.zip')
+                )
+           )
     
 }
