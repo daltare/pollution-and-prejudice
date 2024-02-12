@@ -189,6 +189,15 @@ list(
                    output_directory = 'tar_data_results')
     ),
     
+    #### write shapefile
+    tar_target(name = write_shapefile, 
+               command = f_convert_to_shapefile(
+                   sf_combined_results, 
+                   output_file_name = 'HOLC_CES_scores_demographics.shp',
+                   output_directory = 'tar_data_results/HOLC_CES_scores_demographics'),
+               format = 'file'
+    ),
+    
     
     ### 04 - create plots & maps -----------------------------------------------
     #### 04 - map (showing analysis process) - 4 panes ----
