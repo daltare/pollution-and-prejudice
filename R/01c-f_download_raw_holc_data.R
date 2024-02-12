@@ -52,12 +52,16 @@ f_download_raw_holc_data <- function(url_base,
     #                             overwrite = TRUE)))
     
     ## download geojson files to local directory ----
-    walk2(.x = redline_cities$holc_city,
-          .y = redline_cities$holc_filename, 
-          .f = ~ GET(url = paste0(url_base, 'geojson/', .y, '.geojson'), 
-                     write_disk(here(download_directory, 
-                                     paste0(.y, '.geojson')),
-                                overwrite = TRUE)))
+    ### !!!! NOTE !!!!
+    ### 2024-02-12 - commenting out this step, because the data download format has 
+    ### changed, and as of now it looks like the area descriptions are not included 
+    ### in the new geojson file (or the new geopackage file)
+    # walk2(.x = redline_cities$holc_city,
+    #       .y = redline_cities$holc_filename, 
+    #       .f = ~ GET(url = paste0(url_base, 'geojson/', .y, '.geojson'), 
+    #                  write_disk(here(download_directory, 
+    #                                  paste0(.y, '.geojson')),
+    #                             overwrite = TRUE)))
     
     ## return data frame including path to raw data files (all files) ----
     raw_files_info <- redline_cities %>% 
