@@ -15,22 +15,36 @@ The purpose of this project is to analyze present-day environmental and socioeco
 
 Our goal is to analyze whether or not present-day pollution burdens, as well as vulnerability to the effects of pollution (due to socioeconomic conditions), tend to show any association with historical HOLC grade in neighborhoods assessed by the HOLC in the 1930s. In other words, we are exploring whether historical HOLC grade continues to be a possible predictor of present-day environmental and socioeconomic conditions. We also explore the present-day racial / ethnic makeup of those neighborhoods, to assess whether racial disparities by HOLC grade tend to persist today.
 
+------------------------------------------------------------------------
+
 ## Data Sources
 
 The primary data sources used in this analysis are:
 
 -   [Mapping Inequality: Redlining in New Deal America](https://dsl.richmond.edu/panorama/redlining/#loc=6/36.37/-121.816)
     -   provides the HOLC (or "Redlining") maps, which are available to download in various formats
-    -   a version of the dataset processed for use in this analysis (including data for all 8 California urban areas assessed by the HOLC) is available to download at [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_processed/holc_data/redline_maps_processed.gpkg)
+    -   a version of the dataset processed for use in this analysis (including data for all 8 California urban areas assessed by the HOLC) is available to download at [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/01-3_data_processed/holc_data/redline_maps_processed.gpkg)
 -   [CalEnviroScreen 4.0](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40)
     -   assesses relative pollution burden and vulnerability for each census tract in California, providing an overall score as well as scores for 21 specific indicators of pollution burden or population characteristics for each tract, available to access/download in various formats
-    -   a version of the dataset processed for use in this analysis (with cleaned / expanded field names, missing values encoded as `NA`, and revised geographic representation of census tracts - to fix inconsistent boundaries between tracts - based on simplified 2010 TIGER data) is available to download at [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_processed/ces_data/calenviroscreen_4-0_processed_tiger_simple.gpkg)
+    -   a version of the dataset processed for use in this analysis (with cleaned / expanded field names, missing values encoded as `NA`, and revised geographic representation of census tracts - to fix inconsistent boundaries between tracts - based on simplified 2010 TIGER data) is available to download at [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/01-3_data_processed/ces_data/calenviroscreen_4-0_processed_tiger_simple.gpkg)
+
+------------------------------------------------------------------------
 
 ## Analytical Process and Results
 
-For an overview of the analytical process and results, see the [summary_report.md](tar_reports/summary_report.md) document.
+For an overview of the analytical process and results, see the [summary_report.md](03-3_output_reports/summary_report.md) document.
 
-The primary results are available in the `tar_data_results/redline_CES_scores.gpkg` file, which can be downloaded using [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_results/HOLC_CES_scores_demographics.gpkg). This file includes estimated CalEnviroScreen 4.0 scores and estimated population by racial / ethnic group for each neighborhood in the 1930s HOLC maps. Note that the CES scores and demographics in this dataset are estimates that are intended to be used for relative comparisons across groups, and should be used with caution when looking at individual or small numbers of neighborhoods in isolation.
+The primary results are available in the `03-1_output_data` folder, and are available in the following formats:
+
+-   geopackage: `HOLC_CES_scores_demographics.gpkg` – available for download with [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/03-1_output_data/HOLC_CES_scores_demographics.gpkg)
+
+-   shapefile (zipped): `HOLC_CES_scores_demographics_shp.zip` – available for download with [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/03-1_output_data/HOLC_CES_scores_demographics_shp.zip)
+
+These files include estimated CalEnviroScreen 4.0 scores (including overall scores and scores for each individual indicator) and estimated current population by racial / ethnic group for each neighborhood in the 1930s HOLC maps. Note that the CES scores and demographics in this dataset are estimates (based on weighted data from overlapping census tracts) that are intended to be used for relative comparisons across groups, and should be used with caution when looking at individual or small numbers of HOLC neighborhoods in isolation.
+
+A data dictionary for these files – which briefly describes each variable – is also available in the [`03-1_output_data/data_dictionary_outputs.csv`](https://github.com/daltare/pollution-and-prejudice/blob/main/03-1_output_data/data_dictionary_outputs.csv) file (available for download with [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/03-1_output_data/data_dictionary_outputs.csv)).
+
+------------------------------------------------------------------------
 
 ## Reproducibility
 
@@ -57,4 +71,11 @@ cat(
 
 ### Package Management - {renv}
 
-This project uses [`renv`](https://rstudio.github.io/renv/articles/renv.html) for package management. When opening this project as an RStudio Project for the first time, `renv` should automatically install itself and prompt you to run `renv::restore()` to install all package dependencies.
+This project uses [`renv`](https://rstudio.github.io/renv/articles/renv.html) for package management (the `renv` package creates the `renv.lock` file, i.e. the lockfile). When opening this project as an RStudio Project for the first time, `renv` should automatically install itself and prompt you to run `renv::restore()` to install all package dependencies. In addition:
+
+-   Call [`renv::status()`](https://rstudio.github.io/renv/reference/status.html) to check the status and fix any issues that arise (using the commands below)
+-   Developers can call [`renv::install()`](https://rstudio.github.io/renv/reference/install.html) to add packages, [`renv::update()`](https://rstudio.github.io/renv/reference/update.html) to update package versions, and [`renv::snapshot()`](https://rstudio.github.io/renv/reference/snapshot.html) after packages are added or updated (which will record the packages and their sources in the lockfile)
+-   Collaborators can call [`renv::restore()`](https://rstudio.github.io/renv/reference/restore.html) (to get the specific package versions recorded in the lockfile).
+-   The renv documentation notes that if you're making major changes to a project that you haven't worked on for a while, it's often a good idea to start with an [`renv::update()`](https://rstudio.github.io/renv/reference/update.html) before making any changes to the code.
+
+For more information, see [Introduction to renv](https://rstudio.github.io/renv/articles/renv.html).

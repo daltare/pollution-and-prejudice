@@ -23,6 +23,13 @@ user manual: <https://books.ropensci.org/targets/>
 
 ## inspect outputs
 
+These functions allow you to view or load the output object from any
+target (e.g., a dataset). Before using any of these functions, make sure
+to load any packages required to use the given object/dataset (e.g., if
+the target object being retrieved is geospatial data, load the `sf`
+package - otherwise you’ll get an error when you try to use that
+object):
+
 - read an object/target directly (don’t load as a variable):
   `tar_read()`
 - load an object/target (as a variable in the global environment):
