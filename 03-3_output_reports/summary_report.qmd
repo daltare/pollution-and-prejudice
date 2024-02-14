@@ -44,7 +44,7 @@ Estimate CES scores and present-day racial / ethnic makeup for each neighborhood
 - Panel 3 shows the intersection of the HOLC neighborhoods and the CalEnviroScreen scores 
 - Panel 4 (right) shows the estimated / computed CalEnviroScreen score for each HOLC neighborhood, based on an area weighted average of the CalEnviroScreen scores for the census tracts that overlap with each HOLC neighborhood
 
-![Process Map](../tar_plots/01_map-combined_Stockton.png){#fig-map-process}
+![Process Map](../03-2_output_plots/01_map-combined_Stockton.png){#fig-map-process}
 
 ## Results - CalEnviroScreen Scores
 

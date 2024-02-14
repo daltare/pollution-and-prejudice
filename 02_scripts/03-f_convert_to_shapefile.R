@@ -25,7 +25,7 @@ f_convert_to_shapefile <- function(sf_combined_summary,
     sf_combined_summary_rev <- sf_combined_summary
     
     ### get new field names (manually created) ----
-    col_names_rev <- read_csv(here('data_input_manual',
+    col_names_rev <- read_csv(here('01-1_data_input_manual',
                                    'col_names_outputs.csv'))
     ### set names ----
     names(sf_combined_summary_rev) <- col_names_rev$col_name_shp

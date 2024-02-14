@@ -10,7 +10,7 @@ library(spdep)
 sf::sf_use_s2(FALSE)
 
 # get data (CES scores by HOLC neighborhood) ---------------------------
-holc_ces_scores <- st_read(here('tar_data_results', 'HOLC_CES_scores_demographics.gpkg'))
+holc_ces_scores <- st_read(here('03-1_output_data', 'HOLC_CES_scores_demographics.gpkg'))
 # mapview(results, zcol = 'calenviroscreen_4_0_score') | mapview(results, zcol = 'holc_grade')
 
 
