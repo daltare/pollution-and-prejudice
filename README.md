@@ -45,7 +45,7 @@ The primary data sources used in this analysis are:
   - a version of the dataset processed for use in this analysis
     (including data for all 8 California urban areas assessed by the
     HOLC) is available to download at [this
-    link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_processed/holc_data/redline_maps_processed.gpkg)
+    link](https://github.com/daltare/pollution-and-prejudice/raw/main/01-3_data_processed/holc_data/redline_maps_processed.gpkg)
 - [CalEnviroScreen
   4.0](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40)
   - assesses relative pollution burden and vulnerability for each census
@@ -58,19 +58,19 @@ The primary data sources used in this analysis are:
     revised geographic representation of census tracts - to fix
     inconsistent boundaries between tracts - based on simplified 2010
     TIGER data) is available to download at [this
-    link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_processed/ces_data/calenviroscreen_4-0_processed_tiger_simple.gpkg)
+    link](https://github.com/daltare/pollution-and-prejudice/raw/main/01-3_data_processed/ces_data/calenviroscreen_4-0_processed_tiger_simple.gpkg)
 
 ------------------------------------------------------------------------
 
 ## Analytical Process and Results
 
 For an overview of the analytical process and results, see the
-[summary_report.md](tar_reports/summary_report.md) document.
+[summary_report.md](03-3_output_reports/summary_report.md) document.
 
 The primary results are available in the
-`tar_data_results/redline_CES_scores.gpkg` file, which can be downloaded
+`03-1_output_data/redline_CES_scores.gpkg` file, which can be downloaded
 using [this
-link](https://github.com/daltare/pollution-and-prejudice/raw/main/tar_data_results/HOLC_CES_scores_demographics.gpkg).
+link](https://github.com/daltare/pollution-and-prejudice/raw/main/03-1_output_data/HOLC_CES_scores_demographics.gpkg).
 This file includes estimated CalEnviroScreen 4.0 scores and estimated
 population by racial / ethnic group for each neighborhood in the 1930s
 HOLC maps. Note that the CES scores and demographics in this dataset are
@@ -99,7 +99,8 @@ This figure provides a visualization of the workflow defined in the
 [\_targets.R](_targets.R) file:
 
 Warning messages: 1: package ‘targets’ was built under R version 4.3.2
-2: package ‘tarchetypes’ was built under R version 4.3.2
+2: package ‘tarchetypes’ was built under R version 4.3.2 3:
+tar_source(): these files do not exist: R
 
 ``` mermaid
 graph LR

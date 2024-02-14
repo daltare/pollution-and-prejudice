@@ -44,7 +44,7 @@ Scores.
   CalEnviroScreen scores for the census tracts that overlap with each
   HOLC neighborhood
 
-<img src="../tar_plots/01_map-combined_Stockton.png"
+<img src="../03-2_output_plots/01_map-combined_Stockton.png"
 id="fig-map-process" alt="Figure 1: Process Map" />
 
 ## Results - CalEnviroScreen Scores
