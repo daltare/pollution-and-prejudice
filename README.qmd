@@ -34,7 +34,15 @@ The primary data sources used in this analysis are:
 
 For an overview of the analytical process and results, see the [summary_report.md](03-3_output_reports/summary_report.md) document.
 
-The primary results are available in the `03-1_output_data/redline_CES_scores.gpkg` file, which can be downloaded using [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/03-1_output_data/HOLC_CES_scores_demographics.gpkg). This file includes estimated CalEnviroScreen 4.0 scores and estimated population by racial / ethnic group for each neighborhood in the 1930s HOLC maps. Note that the CES scores and demographics in this dataset are estimates that are intended to be used for relative comparisons across groups, and should be used with caution when looking at individual or small numbers of neighborhoods in isolation.
+The primary results are available in the `03-1_output_data` folder, and are available in the following formats:
+
+-   geopackage: `HOLC_CES_scores_demographics.gpkg` – available for download with [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/03-1_output_data/HOLC_CES_scores_demographics.gpkg)
+
+-   shapefile (zipped): `HOLC_CES_scores_demographics_shp.zip` – available for download with [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/03-1_output_data/HOLC_CES_scores_demographics_shp.zip)
+
+These files include estimated CalEnviroScreen 4.0 scores (including overall scores and scores for each individual indicator) and estimated current population by racial / ethnic group for each neighborhood in the 1930s HOLC maps. Note that the CES scores and demographics in this dataset are estimates (based on weighted data from overlapping census tracts) that are intended to be used for relative comparisons across groups, and should be used with caution when looking at individual or small numbers of HOLC neighborhoods in isolation.
+
+A data dictionary for these files – which briefly describes each variable – is also available in the [`03-1_output_data/data_dictionary_outputs.csv`](https://github.com/daltare/pollution-and-prejudice/blob/main/03-1_output_data/data_dictionary_outputs.csv) file (available for download with [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/03-1_output_data/data_dictionary_outputs.csv)).
 
 ------------------------------------------------------------------------
 
