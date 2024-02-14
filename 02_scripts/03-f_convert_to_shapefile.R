@@ -12,6 +12,7 @@
 
 # create function ----
 f_convert_to_shapefile <- function(sf_combined_summary, 
+                                   data_dictionary_file,
                                    output_file_name,
                                    output_directory) {
     
@@ -25,8 +26,8 @@ f_convert_to_shapefile <- function(sf_combined_summary,
     sf_combined_summary_rev <- sf_combined_summary
     
     ### get new field names (manually created) ----
-    col_names_rev <- read_csv(here('03-1_output_data',
-                                   'data_dictionary_outputs.csv'))
+    col_names_rev <- read_csv(data_dictionary_file)
+    
     ### set names ----
     names(sf_combined_summary_rev) <- col_names_rev$field_name_shapefile
     

@@ -181,6 +181,12 @@ list(
     ),
     
     ### 03 - combine data & create output file ---------------------------------
+    #### 03-0 - data dictionary file
+    tar_target(name = data_dictionary_file, 
+               command = here('03-1_output_data', 'data_dictionary_outputs.csv'), 
+               format = 'file'
+    ),
+    
     #### 03-1 - combine data and create geopackage
     tar_target(name = sf_combined_results, 
                command = f_combine_computed_data(
@@ -195,6 +201,7 @@ list(
     tar_target(name = write_shapefile, 
                command = f_convert_to_shapefile(
                    sf_combined_results, 
+                   data_dictionary_file,
                    output_file_name = 'HOLC_CES_scores_demographics.shp',
                    output_directory = '03-1_output_data/HOLC_CES_scores_demographics_shp'),
                format = 'file'
