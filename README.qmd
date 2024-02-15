@@ -23,7 +23,7 @@ The primary data sources used in this analysis are:
 
 -   [Mapping Inequality: Redlining in New Deal America](https://dsl.richmond.edu/panorama/redlining/#loc=6/36.37/-121.816)
     -   provides the HOLC (or "Redlining") maps, which are available to download in various formats
-    -   a version of the dataset processed for use in this analysis (including data for all 8 California urban areas assessed by the HOLC) is available to download at [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/01-3_data_processed/holc_data/redline_maps_processed.gpkg)
+    -   a version of the dataset processed for use in this analysis (including data for all 8 California urban areas assessed by the HOLC) is available to download at [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/01-3_data_processed/holc_data/HOLC_maps_processed.gpkg)
 -   [CalEnviroScreen 4.0](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40)
     -   assesses relative pollution burden and vulnerability for each census tract in California, providing an overall score as well as scores for 21 specific indicators of pollution burden or population characteristics for each tract, available to access/download in various formats
     -   a version of the dataset processed for use in this analysis (with cleaned / expanded field names, missing values encoded as `NA`, and revised geographic representation of census tracts - to fix inconsistent boundaries between tracts - based on simplified 2010 TIGER data) is available to download at [this link](https://github.com/daltare/pollution-and-prejudice/raw/main/01-3_data_processed/ces_data/calenviroscreen_4-0_processed_tiger_simple.gpkg)

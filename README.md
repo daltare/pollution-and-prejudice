@@ -45,7 +45,7 @@ The primary data sources used in this analysis are:
   - a version of the dataset processed for use in this analysis
     (including data for all 8 California urban areas assessed by the
     HOLC) is available to download at [this
-    link](https://github.com/daltare/pollution-and-prejudice/raw/main/01-3_data_processed/holc_data/redline_maps_processed.gpkg)
+    link](https://github.com/daltare/pollution-and-prejudice/raw/main/01-3_data_processed/holc_data/HOLC_maps_processed.gpkg)
 - [CalEnviroScreen
   4.0](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40)
   - assesses relative pollution burden and vulnerability for each census
@@ -123,8 +123,7 @@ graph LR
   style Graph fill:#FFFFFF00,stroke:#000000;
   subgraph Legend
     direction LR
-    x7420bd9270f8d27d([""Up to date""]):::uptodate --- xa8565c104d8f0705([""Dispatched""]):::dispatched
-    xa8565c104d8f0705([""Dispatched""]):::dispatched --- x0a52b03877696646([""Outdated""]):::outdated
+    x7420bd9270f8d27d([""Up to date""]):::uptodate --- x0a52b03877696646([""Outdated""]):::outdated
     x0a52b03877696646([""Outdated""]):::outdated --- xbf4603d6c2c2ad6b([""Stem""]):::none
     xbf4603d6c2c2ad6b([""Stem""]):::none --- xf0bce276fe2b9d3e>""Function""]:::none
     xf0bce276fe2b9d3e>""Function""]:::none --- x5bffbffeae195fc9{{""Object""}}:::none
@@ -174,7 +173,7 @@ graph LR
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> x26888c3adf53b8ba(["plot_scores_points_average_by_grade"]):::uptodate
     x0933fedf1eaed55e(["df_holc_demographics_calculations"]):::uptodate --> x722c080414fdf571(["df_holc_demographics_summary"]):::uptodate
     x2dfdf1b5ee4ba094>"f_summarize_HOLC_demographics"]:::uptodate --> x722c080414fdf571(["df_holc_demographics_summary"]):::uptodate
-    xf443f725966ed075{{"last_report_update"}}:::uptodate --> x3b5990520b2e818d(["summary_report_html"]):::uptodate
+    xf443f725966ed075{{"last_report_update"}}:::outdated --> x3b5990520b2e818d(["summary_report_html"]):::outdated
     x716156bac81cd62e(["df_holc_ces_scores_comparison"]):::uptodate --> xe4dc7810b8261f38(["plot_scores_method_comparison_scatter_facet"]):::uptodate
     x3b0727f79ff18b40>"f_plot_scores_method_comparison_scatter_facet"]:::uptodate --> xe4dc7810b8261f38(["plot_scores_method_comparison_scatter_facet"]):::uptodate
     x716156bac81cd62e(["df_holc_ces_scores_comparison"]):::uptodate --> x30558efb09c7936d(["plot_scores_method_comparison_scatter"]):::uptodate
@@ -184,9 +183,9 @@ graph LR
     x7ad41e3fd12f2676(["ces_names_file"]):::uptodate --> x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate
     xdca65f7684d779f0>"f_process_ces_data"]:::uptodate --> x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate
     x6538bfb2bd8fa5af(["raw_ces_data_file"]):::uptodate --> x66ea1e7e4088616e(["sf_formatted_ces_data"]):::uptodate
-    x973757ac5e3621cd(["data_dictionary_file"]):::uptodate --> xf040698982835e96(["write_shapefile"]):::outdated
-    x9e5564aad7264f3e>"f_convert_to_shapefile"]:::uptodate --> xf040698982835e96(["write_shapefile"]):::outdated
-    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xf040698982835e96(["write_shapefile"]):::outdated
+    x973757ac5e3621cd(["data_dictionary_file"]):::uptodate --> xf040698982835e96(["write_shapefile"]):::uptodate
+    x9e5564aad7264f3e>"f_convert_to_shapefile"]:::uptodate --> xf040698982835e96(["write_shapefile"]):::uptodate
+    x7774e14ad1201765(["sf_combined_results"]):::uptodate --> xf040698982835e96(["write_shapefile"]):::uptodate
     xc504145cdabdd854>"f_download_raw_ces_data"]:::uptodate --> x6538bfb2bd8fa5af(["raw_ces_data_file"]):::uptodate
     xbc38fdbb09f54cdc(["df_holc_ces_scores_summary"]):::uptodate --> x7774e14ad1201765(["sf_combined_results"]):::uptodate
     x722c080414fdf571(["df_holc_demographics_summary"]):::uptodate --> x7774e14ad1201765(["sf_combined_results"]):::uptodate
@@ -203,20 +202,18 @@ graph LR
     xd358c84560a350ea(["sf_formatted_holc_data"]):::uptodate --> x52b2d35838d1c908(["plot_map_panels"]):::uptodate
     x05780902aff2e52e>"f_plot_scores_points_departure"]:::uptodate --> x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate
     x7774e14ad1201765(["sf_combined_results"]):::uptodate --> x85db2b90c235dab6(["plot_scores_points_departure"]):::uptodate
-    x118ccf0169559b01(["readme_file"]):::dispatched --> x118ccf0169559b01(["readme_file"]):::dispatched
+    x118ccf0169559b01(["readme_file"]):::outdated --> x118ccf0169559b01(["readme_file"]):::outdated
     xd244e8c357cc9580(["targets_notes_file"]):::uptodate --> xd244e8c357cc9580(["targets_notes_file"]):::uptodate
   end
   classDef uptodate stroke:#000000,color:#ffffff,fill:#354823;
-  classDef dispatched stroke:#000000,color:#000000,fill:#DC863B;
   classDef outdated stroke:#000000,color:#000000,fill:#78B7C5;
   classDef none stroke:#000000,color:#000000,fill:#94a4ac;
   linkStyle 0 stroke-width:0px;
   linkStyle 1 stroke-width:0px;
   linkStyle 2 stroke-width:0px;
   linkStyle 3 stroke-width:0px;
-  linkStyle 4 stroke-width:0px;
+  linkStyle 76 stroke-width:0px;
   linkStyle 77 stroke-width:0px;
-  linkStyle 78 stroke-width:0px;
 ```
 
 ### Package Management - {renv}
